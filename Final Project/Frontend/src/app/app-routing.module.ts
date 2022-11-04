@@ -4,6 +4,9 @@ import { AdmindashboardComponent } from './Admin/admindashboard/admindashboard.c
 import { AdminloginComponent } from './Admin/adminlogin/adminlogin.component';
 import { ContainerComponent } from './container/container.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { AdminGuard } from './Guards/admin.guard';
+import { LoginGuard } from './Guards/login.guard';
+import { OwnerLoginGuard } from './Guards/owner-login.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { OwnerContainerComponent } from './Owner/owner-container/owner-container.component';
@@ -44,7 +47,8 @@ const routes: Routes = [
   {
     path : 'favorites',
     component : FavoriteComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    canActivate: [LoginGuard]
   },
   {
     path: 'display',
@@ -59,12 +63,14 @@ const routes: Routes = [
   {
     path: 'admindash',
     component: AdmindashboardComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[AdminGuard]
   },
   {
     path: 'ownerdash',
     component:OwnerDataComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate:[OwnerLoginGuard]
   },
   {
     path: 'ownerregister',

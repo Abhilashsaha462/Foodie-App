@@ -95,6 +95,54 @@ export class LinkService {
     return localStorage.getItem("Token");
   }
 
+  setOwnerToken(tok:string){
+    localStorage.setItem('Owner Token',tok);
+    return true;
+  }
+  getOwnerToken(){
+    return localStorage.getItem('Owner Token');
+  }
+  ownerLogOut(){
+    localStorage.removeItem('Owner Token');
+  }
+  isOwnerLoggedIn(){
+    let token = localStorage.getItem("Owner Token")
+    if(token===undefined || token==='' || token==null){
+      console.log("Logged Out");
+      
+      return false;
+    }else{
+      console.log("Token",token);
+      
+      console.log("Logged In");
+      
+      return true;
+    }
+  }
+  setAdminToken(adminT:string){
+    localStorage.setItem('Admin token',adminT)
+  }
+  getAdminToken(){
+    return localStorage.getItem('Admin token');
+  }
+  isAdminLoggedIn(){
+    let token = localStorage.getItem("Admin token")
+    if(token===undefined || token==='' || token==null){
+      console.log("Logged Out");
+      
+      return false;
+    }else{
+      console.log("Token",token);
+      
+      console.log("Logged In");
+      
+      return true;
+    }
+  }
+  adminLoggedOut(){
+    localStorage.removeItem('Admin token')
+  }
+
   check(regData:reg):Observable<reg> {
     console.log(regData)
     return this.httpclient.post<reg>(`${this.url}`,regData);
