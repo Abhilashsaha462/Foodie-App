@@ -1,0 +1,127 @@
+.sidenav-container{
+    height: 100%;
+}
+
+.menu-button{
+    margin-right: 20px;
+}
+
+.sidenav{
+    width: 20%;
+    text-align: center;
+}
+
+.logout-button{
+    margin-left: 27%;
+}
+
+.icon-gap{
+    margin-right: 10px;
+}
+
+.grid-container {
+    margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.k{
+  font-style: Georgia (serif);
+  font-size: larger;font-weight: bold;
+}
+
+.example-button-container {
+  display: flex;
+  /* justify-content: center; */
+  /* width: 120px; */
+  position:relative;margin-top: -190px;float: left;margin-left: -20px;
+}
+
+.fav{
+  text-decoration-color: red;
+}
+
+.notfav{
+  color: red;
+}
+
+.search-comp{
+  
+  width: 400px;
+  margin-left: 5%;
+}
+
+.search-comps{
+  position: static;
+  width: 400px;
+  margin-left: 30%;
+}
+
+.search-result{
+  position:absolute;
+  /* border: 1px solid gray; */
+  width: 100%;
+  height: max-content;
+  display: none;
+  z-index: +1;
+  background-color: white;
+  font-size: medium;padding-left: 10px;color: whitesmoke;text-decoration: none;
+}
+
+.search-container{
+  position: relative;
+  width: 30%;
+  margin-left: 28%; 
+}
+
+.last-container{
+  height: 300px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.main-logo{
+  border-radius: 50%;
+}
+
+.social_logo{
+  height: 50px;
+  margin-right: 20px;
+  display: inline;
+}
+
+.desclaimer{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.for_Details{
+  height: 80px;
+  
+  width: 13%;
+  float: left;
+  margin-left: 5px;
+  padding-top: 5px;
+  
+
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.search{
+  margin-left: 0px;
+}

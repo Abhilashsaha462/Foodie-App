@@ -1,0 +1,68 @@
+<form class="edit-form" (submit)="updateData()" [formGroup]="EditForm">
+    <div>
+        <h1>Edit Profile</h1>
+    </div>
+
+    <div>
+        <mat-form-field class="username" appearance="fill">
+            <mat-label>UserName</mat-label>
+            <input type="text" matInput placeholder="username" class="inputs" formControlName="userName">
+        </mat-form-field>
+
+        <mat-form-field class="email" appearance="fill">
+            <mat-label>Email Id</mat-label>
+            <input type="text" matInput placeholder="Ex.  xyz00@abc.com" readonly class="inputs" formControlName="email">
+        </mat-form-field>
+        
+    </div>
+    
+    <div>
+        <mat-form-field class="phoneNo" appearance="fill">
+            <mat-label>Contact No</mat-label>
+            <input type="text" matInput placeholder="Ex. +91 7783672422" class="inputs" formControlName="phoneNo">
+        </mat-form-field>
+        <!--<div class="ErrMsg" *ngIf="EditForm.controls['phoneNo'].hasError('required')">Password is Mandatory !</div>-->
+        <div class="ErrMsg" *ngIf="EditForm.controls['phoneNo'].hasError('pattern')">phone No format is incorrect! Please try again!</div> 
+
+        <mat-form-field class="password" appearance="fill">
+            <mat-label>Set Password</mat-label>
+            <input type="password" matInput placeholder="Ex. Test123@Now" class="inputs" formControlName="password">
+        </mat-form-field>
+        <!-- <div class="ErrMsg" *ngIf="EditForm.controls['password'].hasError('pattern')">Password is too Weak! try: Test@13nOw</div> -->
+    </div>
+    
+    <div><mat-divider></mat-divider></div>
+    <div><h1>Address Details:</h1></div>
+    <div formArrayName="address">
+        <div *ngFor="let item of add.controls; let i=index" [formGroupName]="i">
+            <div>
+            <mat-form-field class="homeNo" appearance="fill">
+                <mat-label>home No</mat-label>
+                <input type="text" matInput placeholder="Ex. 18, H23, H@17" class="inputs" formControlName="homeNo">
+            </mat-form-field>
+            <!--<div class="ErrMsg" *ngIf="RegistryForm.controls['homeNo'].hasError('required')">Detail is Mandatory !</div>-->
+
+            <mat-form-field class="road" appearance="fill">
+                <mat-label>road/Lane</mat-label>
+                <input type="text" matInput placeholder="Ex. baseRoad, Lane 23" class="inputs" formControlName="roadName">
+            </mat-form-field>
+            <!-- <div class="ErrMsg" *ngIf="EditForm.controls['homeNo'].hasError('pattern')">Pincode should only consist of numbers</div> -->
+        </div>
+        
+        <div>
+            <mat-form-field class="city" appearance="fill">
+                <mat-label>City</mat-label>
+                <input type="text" matInput placeholder="Ex. Belkin, Rondard" class="inputs" formControlName="city">
+            </mat-form-field>
+            
+
+            <mat-form-field class="pincode" appearance="fill">
+                <mat-label>Pincode</mat-label>
+                <input type="text" matInput placeholder="Ex. 227822, 660099" class="inputs" formControlName="pincode">
+            </mat-form-field>
+            
+        </div>
+    </div></div>
+    <button mat-raised-button type="submit">Update</button>
+    <button mat-raised-button class="cancel-button" (click)="cancelation()">Cancel</button> 
+</form>

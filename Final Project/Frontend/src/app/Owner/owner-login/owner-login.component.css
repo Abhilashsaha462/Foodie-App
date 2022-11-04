@@ -1,0 +1,40 @@
+.login-button{
+    margin-right: 80px;border-radius: 40%;
+}
+.example-form {
+    min-width: 100px;
+    max-width: 300px;
+    width: 100%;
+}
+  
+.example-full-width {
+  color: white;
+  width: 100%;background-color: black;
+}
+.login-form{
+  text-align: center;
+  margin-top: 20px;
+}
+
+div{
+    margin-bottom: 10px;
+}
+
+.ErrMsg{
+    color: red;
+}
+
+mat-form-field{
+    width: 300px;
+}
+
+.main-logo-3{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 100px;
+}
+
+.goBack{
+    margin-left: 85%;
+}

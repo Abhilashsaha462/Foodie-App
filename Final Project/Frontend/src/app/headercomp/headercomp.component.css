@@ -1,0 +1,21 @@
+.a{
+    display: flex;width: 100%;background-color: antiquewhite;height: 80px;
+  }
+  .b{
+   font-size: larger;padding-left: 30px;padding-right: 460px;
+  }
+  .example-full-width{
+    width: 350px;height: 30px;background-color: beige;
+  }
+  .c{
+    margin-left: 30px;
+  }
+  .d{
+    float: right;
+  }
+  .e{
+    margin-left: 1500px;
+  }
+  .sidenav-container {
+    height: 100%;
+  }

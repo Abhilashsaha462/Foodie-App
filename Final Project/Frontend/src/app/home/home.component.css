@@ -1,0 +1,103 @@
+.favorite-button{
+    margin-left: 80%;
+}
+
+.menu-button{
+    margin-right: 20px;
+}
+
+.home-gallery{
+    background-image: url("src\assets\background_1.jpg");
+    /*width: 100%*/
+    height: 500px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.main-logo{
+    border-radius: 50%;
+    margin-top: 150px;
+}
+
+.sidenav-container{
+    height: 100%;
+}
+
+.sidenav{
+    width: 20%;
+    text-align: center;
+}
+
+.dish-style{
+    border-radius: 50%;
+}
+
+.img-size{
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    margin-right: 50px;
+    float: left;
+}
+
+.icon-gap{
+    margin-right: 30px;
+}
+
+.cuisine-div{
+    margin-top: 30px;
+    margin-left: 50px;
+    height: 160px;
+}
+
+.restaurant-gallery{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+mat-divider{
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-width: 5px;
+    border-radius: 50px;
+}
+
+.restaurant-gallery{
+    margin: 30px 30px 20px;
+    text-align: center;
+    height: 550px;
+}
+
+.image-div{
+    margin: 20px 20px 20px;
+    float: left;
+}
+
+.restaurant-images{
+    border-radius: 50px;
+}
+
+.font{
+    text-align: center;
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    margin-left: 40px;
+
+}
+
+.gallery-div{
+    float: left;
+    
+}
+
+.gallery-image{
+    border-radius: 30px;
+}
+
+.gallery-container{
+    margin-left: 50px;
+    height: 950px;
+}

@@ -1,0 +1,71 @@
+<mat-toolbar color="primary">
+    <div>
+        <h1>
+            Foodie
+        </h1>
+    </div>
+    <button mat-raised-button color="primary" (click)="navToHome()" class="home-button">Home</button>
+    
+</mat-toolbar>
+    
+<form class="register-form" (submit)="registerfun()" [formGroup]="RegistryForm"><br><br>
+    <div>
+        <h1>
+            User Registry Form
+        </h1>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            
+            <input type="text" matInput placeholder="User Name" class="inputs" formControlName="userName">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input type="text" matInput placeholder="Ex.  xyz00@abc.com" class="inputs" formControlName="email">
+        </mat-form-field>
+        <div class="ErrMsg" *ngIf="RegistryForm.controls['email'].hasError('required')">Email is Mandatory !</div>
+        <div class="ErrMsg" *ngIf="RegistryForm.controls['email'].hasError('email')">Email Format is incorrect please check again !</div>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input type="password" matInput placeholder="Ex. Test123@Now" class="inputs" formControlName="password">
+        </mat-form-field>
+        <div class="ErrMsg" *ngIf="RegistryForm.controls['password'].hasError('required')">Password is Mandatory !</div>
+        <div class="ErrMsg" *ngIf="RegistryForm.controls['password'].hasError('pattern')">Password is too Weak! try: Test@13nOw</div>
+    </div>
+    <div>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <input type="text" matInput placeholder="Ex. +91 7783672422" class="inputs" formControlName="phoneNo">
+        </mat-form-field>
+        <!--<div class="ErrMsg" *ngIf="RegistryForm.controls['phoneNo'].hasError('required')">Password is Mandatory !</div>-->
+        <div class="ErrMsg" *ngIf="RegistryForm.controls['phoneNo'].hasError('pattern')">phone No format is incorrect! Please try again!</div>
+    </div>
+    <div><mat-divider></mat-divider></div>
+    <div><h1>Address Details:</h1></div>
+    <div formArrayName="address">
+        <div *ngFor="let item of add.controls; let i=index" [formGroupName]="i">
+      
+          <!-- homeNo -->
+      
+          <mat-form-field class="example-full-width" appearance="fill">
+              <input id="homeNo" type="number" matInput placeholder="Enter House No" formControlName="homeNo">
+          </mat-form-field><br>
+      
+          <!-- roadName -->
+          <mat-form-field class="example-full-width" appearance="fill">
+              <input id="roadName" type="text" matInput placeholder="Enter Road Name" formControlName="roadName">
+          </mat-form-field><br>
+      
+          <!-- city -->
+          <mat-form-field class="example-full-width" appearance="fill">
+              <input id="city" type="text" matInput placeholder="Enter City" formControlName="city">
+          </mat-form-field><br>
+      
+          <!-- pincode -->
+          <mat-form-field class="example-full-width" appearance="fill">
+              <input id="pincode" type="number" matInput placeholder="Enter PinCode" formControlName="pincode">
+          </mat-form-field>
+      </div></div><br>
+    <button mat-raised-button type="submit" color="primary" [disabled]="RegistryForm.invalid">Register</button>
+</form>

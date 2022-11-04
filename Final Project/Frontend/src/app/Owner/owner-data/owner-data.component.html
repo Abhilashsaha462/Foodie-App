@@ -1,0 +1,70 @@
+
+<mat-sidenav-container class="sidenav-container">
+    <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
+        <div><span>Foodie</span></div>
+     
+        <button mat-stroked-button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
+    </mat-toolbar>
+
+    <section style="position: static;">
+        <div class="restaurent-details">
+            <div class="grid-container">
+                <mat-grid-list cols="4" rowHeight="270px">
+                  <mat-grid-tile *ngFor="let card of restaurant;let i=index" [colspan]="1" [rowspan]="1">
+                    <mat-card class="dashboard-card">
+                      <mat-card-header>
+                        <mat-card-title>
+                          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Expand</button>
+                            <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content class="dashboard-card-content">
+                          <app-image [image]="card.url" (click)="openRestaurant(card)"></app-image>
+                          
+                          <span class="k">{{card.restName}}</span>
+                          <br>
+                          <span>{{card.city}}</span><br><br>
+                      </mat-card-content>
+                    </mat-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </div>
+
+        </div>
+    </section>
+
+    <mat-divider></mat-divider>
+    <section>
+        <div class="gallery">
+            <div class="gallery-item">
+                
+            </div>
+        </div>
+    </section>
+
+    <mat-divider></mat-divider>
+    <section>
+        <div class="profile">
+
+        </div>
+    </section>
+    
+
+    <mat-sidenav #sidenav class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
+            <a mat-list-item (click)=editProfile()><mat-icon class="icon-gap">person</mat-icon>Edit Profile</a>
+            <!-- <a mat-list-item><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a> -->
+            <a mat-list-item (click)=addRest()><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a>
+          
+            
+        </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>
+

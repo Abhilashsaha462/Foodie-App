@@ -1,0 +1,35 @@
+.edit-form{
+    margin: 10px 10px 10px;
+}
+
+div{
+    margin-bottom: 10px;
+}
+
+.ErrMsg{
+    color: red;
+}
+
+.email{
+    margin-left: 100px;
+}
+
+.password{
+    margin-left: 100px;
+}
+
+.road{
+    margin-left: 100px;
+}
+
+.pincode{
+    margin-left: 100px;
+}
+
+.cancel-button{
+    margin-left: 350px;
+}
+
+mat-divider{
+    margin-right: 45px;
+}

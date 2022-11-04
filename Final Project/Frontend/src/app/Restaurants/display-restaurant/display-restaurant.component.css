@@ -1,0 +1,171 @@
+.example-card {
+    max-width: 800px;height: max-content;
+    margin-bottom: 8px;
+  }
+  .cart_section {
+    padding: 40px 0;
+}
+
+table {
+    font-family: arial,
+        sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+/*tr:nth-child(even) {
+    background-color: green;
+}
+
+tr:nth-child(odd) {
+  background-color: rgb(5, 75, 5);
+}*/
+
+.btn {
+  background:
+      rgb(94, 0, 0);
+  border-radius: 50%;
+  font-size: 16px;
+  color: #fff;
+  margin: 0 8px;
+}
+
+.content span {
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.cart_section h3 {
+    margin-top: 10px;
+    font-size: 22px;
+}
+
+.delete {
+    border: 1px solid rgb(247, 14, 14);
+    cursor: pointer;
+}
+
+.delete i {
+    font-size: 18px;
+    color: rgb(248, 2, 2);
+}
+
+.removeall {
+    background: #df0000;
+    color: #fff;
+    font-weight: 600;
+    border: 1px solid #b00000;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-top: 14px;
+}
+.inputs{
+    width: 500px;
+}
+.g{
+    width: 300px;
+}
+.sidenav-container{
+  
+    height: 100%;
+}
+
+.menu-button{
+    margin-right: 20px;
+}
+
+.sidenav{
+    width: 20%;
+    text-align: center;
+}
+
+.logout-button{
+    margin-left: 20%;
+}
+
+.icon-gap{
+    margin-right: 10px;
+}
+.grid-container {
+    margin: 20px;
+}
+  
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+.k{
+  font-style: Georgia (serif);
+  font-size: larger;font-weight: bold;
+}
+.example-button-container {
+  display: flex;
+  /* justify-content: center; */
+  /* width: 120px; */
+  position:relative;margin-top: -190px;float: left;margin-left: -20px;
+}
+.fav{
+  text-decoration-color: red;
+}
+notfav{
+  color: red;
+}
+.search-comp{
+  
+  width: 400px;
+  margin-left: 5%;
+}
+.search-comps{
+  position: static;
+  width: 400px;
+  margin-left: 30%;
+}
+.search-result{
+  position:absolute;
+  /* border: 1px solid gray; */
+  width: 100%;
+  height: max-content;
+  display: none;
+  z-index: +1;
+  background-color: white;
+  font-size: medium;padding-left: 10px;color: whitesmoke;text-decoration: none;
+}
+.search-container{
+  position: relative;
+  width: 30%;
+  margin-left: 28%;
+  
+}
+.toolbar{
+    width: 100%;
+}
+
+.content{
+  width: 200px;
+  border: 3px solid white;
+  text-align: center;
+}
+
+.cancel-button{
+  margin-left: 70%;
+}

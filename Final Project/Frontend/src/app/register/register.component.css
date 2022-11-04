@@ -1,0 +1,23 @@
+.f{
+    float: right;margin-left: 1050px;
+  }
+  .register-form{
+    text-align: center;
+   
+}
+
+mat-form-field{
+    width: 300px;
+}
+
+div{
+    margin-bottom: 10px;
+}
+
+.ErrMsg{
+    color: red;
+}
+
+.home-button{
+    margin-left: 85%;
+}

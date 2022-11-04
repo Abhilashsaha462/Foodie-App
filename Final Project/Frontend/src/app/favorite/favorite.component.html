@@ -1,0 +1,85 @@
+
+<mat-sidenav-container class="sidenav-container">
+    <section>
+        <div class="restaurent-details">
+            <div class="grid-container">
+                <mat-grid-list cols="4" rowHeight="270px">
+                  <mat-grid-tile *ngFor="let card of restaurant1;let i=index" [colspan]="1" [rowspan]="1">
+                    <mat-card class="dashboard-card">
+                      <mat-card-header>
+                        <mat-card-title>
+                          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Expand</button>
+                            <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content class="dashboard-card-content">
+                          <app-image [image]="card.url" (click)="openRestaurant(card.restName)"></app-image>
+                          
+                          <span class="k">{{card.restName}}</span>
+                          <br>
+                          <span>{{card.city}}</span><br><br>
+                      </mat-card-content>
+                    </mat-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </div>
+
+        </div>
+    </section>
+    <!-- <section>
+      <mat-card>
+        <mat-card-title>Favorite List</mat-card-title>
+    <table border="1" style="width: 85%;">
+      <tbody>
+        <tr>
+          <th>Restaurant Name</th><th>City</th><th>Operations</th>
+        </tr>
+        <tr *ngFor="let l of restaurant;let i=index">
+          <td>{{l.restName}}</td>
+          <td>{{l.city}}</td>
+          <a mat-stroked-button color="primary" (click)="openRestaurant(l.restName)" class="m">Explore</a>
+          <a mat-stroked-button color="primary"(click)="deleteFav(l.restId)" class="m">Remove</a>
+        </tr>
+        
+      </tbody>
+    </table>
+      
+      <a mat-stroked-button color="primary"class="m">Close</a>
+      </mat-card>
+    </section> -->
+    
+    <mat-divider></mat-divider>
+    <section>
+        <div class="gallery">
+            <div class="gallery-item">
+                
+            </div>
+        </div>
+    </section>
+
+    <mat-divider></mat-divider>
+    <section>
+        <div class="profile">
+
+        </div>
+    </section>
+    
+
+    <mat-sidenav #sidenav class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
+            <a mat-list-item (click)="openProfile()"><mat-icon class="icon-gap">person</mat-icon>Edit Profile</a>
+            <a mat-list-item (click)="toFavList()"><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a>
+            <a mat-list-item (click)="openRestaurantsDetails()"><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a>
+            <a mat-list-item (click)="editRest()"><mat-icon class="icon-gap">restaurant</mat-icon>Edit Restaurant</a>
+            <a mat-list-item (click)="dashProfile()"><mat-icon class="icon-gap">person</mat-icon>DashBoard</a>
+            
+        </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>
+

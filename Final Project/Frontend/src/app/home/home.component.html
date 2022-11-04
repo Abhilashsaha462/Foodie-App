@@ -1,0 +1,113 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">    <!-- font-family: 'Open Sans', sans-serif; -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">     <!-- font-family: 'Roboto Condensed', sans-serif;-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+</head>
+
+<mat-sidenav-container class="sidenav-container">
+    
+    <mat-toolbar color="warm" class="toolbar">
+        <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
+        <div><span>Foodie</span></div>
+    </mat-toolbar>
+    
+    <div>
+        <div class="home-gallery">
+            <img class="main-logo" src="assets\Main_Logo_2.png">
+        </div>
+    </div>
+    <div><h1 class="font" style="color: greenyellow;">Mouth Watering Cuisine !</h1></div>
+    <div class="cuisine-div">
+        <div>
+            <img src="assets\Indian_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Italian_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Healthy_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Chinese_logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Bakery_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Beverage_logo.png" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Deserts.png" class="img-size">
+        </div>
+    </div>
+    
+    <div><mat-divider></mat-divider></div>
+    <div><h1 class="font" style="color: Orange;">Good Food Guaranteed !</h1></div>
+    <div class="gallery-container">
+        <div class="gallery-div">
+            <img src="assets\eligent_dish.jpg" class="gallery-image" height="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\Fruits.jpg" class="gallery-image" height="300px" width="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\Desserts_background.jpg" class="gallery-image" height="300px" width="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\Indian_Food.jpg" class="gallery-image" height="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\background_Chinese.jpg" class="gallery-image" height="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\french-food-1920x1080.jpg" class="gallery-image" height="300px" width="400px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\Italian_Food.jpg" class="gallery-image" height="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\Fast-Food.jpg" class="gallery-image" height="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\anotherFood.jpg" class="gallery-image" height="300px">
+        </div>   
+    </div>
+
+    <div><mat-divider></mat-divider></div>
+    <div><h1 class="font" style="color: yellow;">100s of Restaurants !</h1></div>
+    <div class="restaurant-gallery">
+        <div class="image-div">
+            <img src="assets\Dominos.png" class="restaurant-images">
+        </div>
+        <div class="image-div">
+            <img src="assets\KFC_logo.svg.png" class="restaurant-images" height="500px">
+        </div>
+        <div class="image-div">
+            <img src="assets\Taco_Bell.png" class="restaurant-images">
+        </div>
+        <div class="image-div">
+            <img src="assets\Pizza_Hut_logo.svg.png" class="restaurant-images" height="250px">
+        </div>
+    </div>
+
+    <div><mat-divider></mat-divider></div>
+    <div><h1 class="font" style="color: rgb(179, 64, 179);">And many more...</h1><h1 class="font" style="color: greenyellow;">Only on Foodie</h1></div>
+    <div style="text-align: center;"><img src="assets\background_2.jpg" style="border-radius: 50%;height: 400px;"></div>
+
+    <mat-sidenav #sidenav class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
+            <a mat-list-item (click)="navToLogin()"><mat-icon class="icon-gap">person</mat-icon>User Login</a>
+            <a mat-list-item (click)="ownerRegister()"><mat-icon class="icon-gap">people</mat-icon>Restaurant Owners</a>
+            <a mat-list-item (click)="navAdminLog()"><mat-icon class="icon-gap">adb</mat-icon>Admin</a>
+        </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>

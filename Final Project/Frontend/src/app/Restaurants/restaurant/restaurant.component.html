@@ -1,0 +1,53 @@
+<mat-toolbar color="primary">
+    <button mat-raised-button><a routerLink="/home"> Home</a></button>
+    <button mat-raised-button class="f">LogOut</button>
+    </mat-toolbar>
+    <form class="register-form" (submit)="saveData()" [formGroup]="RestForm" enctype="multipart/form-data">
+        <span>Restaurant</span>
+        <div>
+            <div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                
+                    <input type="number" matInput placeholder="Restaurant id" class="inputs" formControlName="restId">
+                </mat-form-field><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                
+                    <input type="text" matInput placeholder="Restaurant Name" class="inputs" formControlName="restName">
+                </mat-form-field><br>
+                <mat-form-field class="example-full-width" appearance="fill">
+                
+                    <input type="text" matInput placeholder="City Name" class="inputs" formControlName="city">
+                </mat-form-field><br><br>
+                
+    
+                
+            </div>
+        <div formArrayName="menuList">
+            <div *ngFor="let item of add.controls; let i=index" [formGroupName]="i">
+          
+              <!-- Item Name -->
+          
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <input id="itemName" type="text" matInput placeholder="Enter Item Name" formControlName="itemName">
+              </mat-form-field><br>
+          
+              <!-- Price -->
+              <mat-form-field class="example-full-width" appearance="fill">
+                  <input id="price" type="text" matInput placeholder="Enter Price" formControlName="price">
+              </mat-form-field>
+          </div></div><br></div>
+
+          <!-- <input type="file" (change)="onFileSelect($event)" class="inputs" formControlName="url"> -->
+
+
+          <div class="form-group">
+            <input type="file" class="form-control" (change)="onSelectFile($event)" class="inputs"/>
+          </div>
+          <div *ngIf="url">
+            <img [src]="url" [alt]="RestForm.value.reg2" />
+          </div>
+
+
+          <button mat-raised-button>Upload Image</button><br><br>
+          <button mat-raised-button type="submit" color="primary" [disabled]="RestForm.invalid">Add Restaurant</button>
+    </form>

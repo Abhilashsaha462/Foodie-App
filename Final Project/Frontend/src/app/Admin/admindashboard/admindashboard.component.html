@@ -1,0 +1,64 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-toolbar color="primary" class="toolbar">
+      <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
+      <div><span>Foodie</span></div>
+      <button mat-stroked-button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
+  </mat-toolbar>
+    
+  <section style="margin-left: 20%;margin-right: 20%;">
+      <h3>Administrative Controller</h3>
+      <mat-tab-group animationDuration="2000ms">
+        <mat-tab label="User Details">
+  
+          <mat-card-content>
+            <table border="1">
+              <tr><th>Customer Name</th> <th>Email</th><th>Phone No</th><th>Remove</th></tr>
+              <tr *ngFor="let l of user;let i=index">
+                  <td>{{l.userName}}</td>
+                  <td>{{l.email}}</td>
+                  <td>{{l.phoneNo}}</td>
+                  <td>
+                    <a mat-stroked-button color="primary" (click)="removeUser(l.email)">Delete User</a>
+                  </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-tab>
+
+        <mat-tab label="Restaurant Detail">
+          <mat-card-content>
+            <table border="1">
+              <tr><th>Restaurant Name</th> <th>City</th><th>Modify</th><th>Remove</th></tr>
+              <tr *ngFor="let l of restaurant;let i=index">
+                  <td>{{l.restName}}</td>
+                  <td style="text-align: center;">{{l.city}}</td>
+                  <td>
+                    <a mat-stroked-button color="primary">Edit Restaurant</a>
+                  </td>
+                  <td>
+                    <a mat-stroked-button color="primary" (click)="removeRestaurant(l.restId)">Delete Restaurant</a>
+                  </td>
+              </tr>
+            </table>
+          </mat-card-content>
+        </mat-tab>
+
+        <mat-tab label="Customer's Feedback">
+          Order Details
+        </mat-tab>
+
+      </mat-tab-group>
+    </section>
+    
+    <mat-sidenav #sidenav class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 25%;"><mat-icon>clear</mat-icon></button></a>
+            <a mat-list-item><mat-icon class="icon-gap">person</mat-icon>Edit Profile</a>
+            <a mat-list-item><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a>
+            <a mat-list-item><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a>
+            <a mat-list-item><mat-icon class="icon-gap">restaurant</mat-icon>Edit Restaurant</a>
+            
+        </mat-nav-list>
+    </mat-sidenav>
+</mat-sidenav-container>
+    

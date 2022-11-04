@@ -1,0 +1,15 @@
+.container{
+    height: 100%;
+}
+
+.drawer{
+    width: 18%;
+}
+
+.goBack{
+    margin-left: 85%;
+}
+
+.main-content{
+    height: 100%;
+}

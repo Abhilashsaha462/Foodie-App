@@ -1,0 +1,11 @@
+server:
+  port: 8090
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/admin_db
+  application:
+    name: admin-service
+#  main:
+#    allow-bean-definition-overriding: true
+

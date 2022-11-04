@@ -1,0 +1,26 @@
+.f{
+    float: right;margin-left: 1050px;
+  }
+  .register-form{
+    text-align: center;
+   
+}
+
+mat-form-field{
+    width: 300px;
+}
+
+div{
+    margin-bottom: 10px;
+}
+
+.ErrMsg{
+    color: red;
+}
+.a{
+    width: 100%;background-color:rgb(96, 94, 101);height: max-content;display: flexbox;
+}
+
+.register-button{
+    margin-right: 150px;
+}

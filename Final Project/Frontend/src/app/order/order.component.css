@@ -1,0 +1,29 @@
+.main-logo{
+    border-radius: 50%;
+    height: 70px;
+}
+
+/*.bill-id{
+    margin-left: 200px;
+}*/
+
+.price{
+    margin-left: 150px;
+}
+
+.input{
+    margin-top: 10px;
+}
+
+div{
+    margin-top: 15px;
+}
+
+mat-grid-tile{
+    text-align: left;
+    padding-top: 0px;
+}
+.example-card {
+    max-width: 800px;height: max-content;
+    margin-bottom: 8px;
+}

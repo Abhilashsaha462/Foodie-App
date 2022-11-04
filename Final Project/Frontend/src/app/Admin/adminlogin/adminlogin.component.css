@@ -1,0 +1,38 @@
+
+.k{
+    margin-top: 100px;margin-left: 600px;
+}
+.a{
+    width: 100%;background-color:rgb(33, 33, 34);height: 100%;
+}
+.b{
+    border-radius: 40%;
+}
+
+.login-form{
+    text-align: center;
+    margin-top: 20px;
+}
+
+div{
+    margin-bottom: 10px;
+}
+
+.ErrMsg{
+    color: red;
+}
+
+mat-form-field{
+    width: 300px;
+}
+
+.main-logo-3{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-top: 100px;
+}
+
+.goBack{
+    margin-left: 87%;
+}

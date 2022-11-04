@@ -1,0 +1,86 @@
+<form class="create-restaurant" [formGroup]="RestForm" (submit)="saveData()" enctype="multipart/form-data">
+    <div><h1>Restaurant Details</h1></div>
+    <div>
+
+        <mat-form-field class="restaurant-id" appearance="fill">
+            <mat-label>Restaurant Id</mat-label>
+            <input type="number" matInput placeholder="Ex 1001, 10002" class="inputs" formControlName="restId">
+        </mat-form-field>
+
+        <mat-form-field class="restaurant-name" appearance="fill">
+            <mat-label>Restaurant Name</mat-label>
+            <input type="text" matInput placeholder="restaurant name" class="inputs" formControlName="restName">
+        </mat-form-field><br>
+        <mat-form-field class="restaurant-email" appearance="fill">
+            <mat-label>Email Id</mat-label>
+            <input type="email" matInput placeholder="abc@gamil.com" class="inputs" formControlName="email">
+        </mat-form-field><br>
+        <div style="display: flex">
+        <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <input type="text" matInput placeholder="city" class="inputs" formControlName="city">
+        </mat-form-field>
+       <div class="file-upload">
+  <div class="file-select">
+    <div class="file-select-button" id="fileName">Choose File</div>
+    <div class="file-select-name" id="noFile">No file chosen...</div>
+    <input type="file" name="chooseFile" (change)="onSelectFile($event)" id="chooseFile">
+  </div>
+</div>
+    </div>
+        <mat-divider></mat-divider>
+        <div>
+            <h1>Menu</h1>
+        </div>
+        <div formArrayName="menuList">
+            <div *ngFor="let x of add.controls;let i=index" [formGroupName]="i">
+    
+                <table>
+                    <tbody style="display: flex;">
+                        <tr>
+                            <td>
+                        <mat-form-field appearance="fill" style="margin-right: 20px;">
+                            <input type="text" matInput placeholder="Item Name" formControlName="itemName" name="itemName">
+                        </mat-form-field>
+                            </td>
+                            <td>
+                        <mat-form-field appearance="fill">
+                            <input type="text" matInput placeholder="Price" formControlName="price" name="price">
+                        </mat-form-field>
+                            </td>
+                        </tr> 
+                <button mat-icon-button style="margin-left: 30px;" (click)="Removeitem(i)"><mat-icon>delete</mat-icon></button>
+               
+                    </tbody>
+                </table>
+        
+    </div>
+    <div>
+        <a mat-stroked-button color="primary" (click)="addNewRow()">Add Menu (+)</a>
+    </div>
+        </div>
+        
+        <!-- <mat-card-content>
+            <table>
+             
+             <tr><th>Item Name</th> <th>Price</th></tr>
+                  <tr *ngFor="let l of restaurant.menuList;let i=index">
+                      <td>
+                          {{l.itemName}}
+                          
+                        </td>
+                      <td>
+                          {{l.price | currency:"INR":"symbol"}}
+                         
+                        </td>
+                   
+                  </tr>
+             
+          </table>
+          </mat-card-content> -->
+        
+
+        <button mat-raised-button type="submit" color="primary">Save Restaurant</button>
+        <button mat-raised-button class="cancel-button" (click)="cancelation()">Cancel</button>
+    </div>
+</form>
