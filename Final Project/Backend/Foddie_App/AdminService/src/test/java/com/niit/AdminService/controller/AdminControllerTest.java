@@ -1,11 +1,9 @@
-package com.niit.AdminService.controller;
+package com.niit.AdminService.Controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.niit.AdminService.domain.Admin;
-import com.niit.AdminService.domain.Menu;
-import com.niit.AdminService.domain.Restaurant;
-import com.niit.AdminService.domain.User;
+import com.niit.AdminService.controller.AdminController;
+import com.niit.AdminService.domain.*;
 import com.niit.AdminService.service.AdminService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,12 +19,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
+import static org.mockito.Mockito.*;
 import java.util.Arrays;
 import java.util.List;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -34,7 +29,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class AdminControllerTest {
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -51,22 +45,25 @@ public class AdminControllerTest {
     List<Menu> menuList;
 
     List<Restaurant> favorites;
+    List<Address> addresses;
+    private Address address;
+    byte[] bytes={(byte) 204, 29, (byte) 207, (byte) 217};
 
     @InjectMocks
     private AdminController adminController;
 
     @BeforeEach
     public void setup(){
-        user1 = new User("abhi@gmail.com","abhil123","AbhiLash","7318656296",null,null);
-        user2 = new User("swapnil2022@gmail.com","swapnil1","Swapnil","8373861031",null,null);
+        user1 = new User("abhi@gmail.com","abhil123","AbhiLash","7318656296",addresses);
+        user2 = new User("swapnil2022@gmail.com","swapnil1","Swapnil","8373861031",addresses);
         menu1 = new Menu("Chicken Biriyani",90.0);
         menu2 = new Menu("Butter Nan",70.0);
         menuList = Arrays.asList(menu1,menu2);
-        restaurant1 = new Restaurant(1001,"abhi@gmail.com","Ranjit Hotel","Siliguri",menuList,null);
-        restaurant2 = new Restaurant(1002,"swapnil2022@gmail.com","Zaika Biriyani","Kolkata",menuList,null);
+        restaurant1 = new Restaurant(1001,"abhi@gmail.com","Ranjit Hotel","Siliguri",new byte[]{ (byte) 204, 29, (byte) 207, (byte) 217 },menuList);
+        restaurant2 = new Restaurant(1002,"abhi@gmail.com","Zaika Biriyani","Kolkata",new byte[]{ (byte) 204, 29, (byte) 207, (byte) 217 },menuList);
         favorites = Arrays.asList(restaurant1,restaurant2);
-        admin1 = new Admin("abhi@gmail.com","abhil123","AbhiLash","7318656296",null);
-        admin2 = new Admin("swapnil2022@gmail.com","swapnil1","Swapnil","8373861031",null);
+        admin1 = new Admin("abhi@gmail.com","abhil123","AbhiLash","7318656296",addresses);
+        admin2 = new Admin("swapnil2022@gmail.com","swapnil1","Swapnil","8373861031",addresses);
         mockMvc = MockMvcBuilders.standaloneSetup(adminController).build();
     }
 
@@ -96,5 +93,4 @@ public class AdminControllerTest {
         }
         return result;
     }
-
 }

@@ -1,0 +1,15 @@
+server:
+  port: 8088
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/Restaurant
+  application:
+    name: restaurant-service
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVER_IP:localhost}:${EUREKA_SERVER_PORT:8761}/eureka
+    fetchRegistry: true
+    registerWithEureka: true

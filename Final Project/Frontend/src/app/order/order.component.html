@@ -1,126 +1,144 @@
-<form class="showBillForm" [formGroup]="RestForm">
-   <div>
-       <img src="assets\Main_Logo_2.png" class="main-logo">
-       <h1 style="text-align: center;">Bill</h1>
-   </div>
-   <div>
+
+
+     <form class="showBillForm" [formGroup]="RestForm">
+        <h1 style="text-align: center;">Bill</h1>
         <div>
-           <h3>Order Id : </h3>
-           <mat-form-field class="order-id" appearance="fill">   
-               <input type="text" matInput class="inputs" formControlName="orderId" readonly>
-           </mat-form-field>
-        </div>
-
-        <div formGroupName="bill">
-           <h3>Bill Id : </h3>
-           <mat-form-field class="bill-id" appearance="fill">
-               <input type="text" matInput class="inputs" formControlName="billId" readonly>
-           </mat-form-field>
-        </div>
-    </div>
-
-    <div><mat-divider></mat-divider></div>
-
-    <div formGroupName="user">
-        <h1>Order Details</h1>
-        <mat-grid-list cols="2" rowHeight="350px">
-            <mat-grid-tile>
-                <div>
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 10px;">User Name : </h3>
-                        <mat-form-field class="user-name" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="userName" readonly>
-                        </mat-form-field>
-                    </div>
+            <div>
+                <h3>Order Id : </h3>
+                <mat-form-field class="order-id" appearance="outline">
                     
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 50px;">Email : </h3>
-                        <mat-form-field class="email-id" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="email" readonly>
-                        </mat-form-field>
-                    </div>
+                    <input type="text" readonly matInput class="inputs" formControlName="orderId">
+                </mat-form-field>
+            </div>
+            <div formGroupName="bill">
+                <h3>Bill Id : </h3>
+                <mat-form-field class="bill-id" appearance="outline">
+                    
+                    <input type="text" readonly matInput class="inputs" formControlName="billId">
+                </mat-form-field>
+            </div>
+        
+        <div>
+            <img src="assets\Main_Logo_2.png" class="main-logo">
             
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 10px;">Contact No : </h3>
-                        <mat-form-field class="phone-no" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="phoneNo" readonly>
-                        </mat-form-field>
-                    </div>
-                </div>
-            </mat-grid-tile>
-            <mat-grid-tile formArrayName="address">
-                <div *ngFor="let item of add.controls; let i=index" [formGroupName]="i">
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 20px;">home No : </h3>
-                        <mat-form-field class="home-no" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="homeNo" readonly>
-                        </mat-form-field>
-                    </div>
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 10px;">Road/Lane : </h3>
-                        <mat-form-field class="road-name" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="roadName" readonly>
-                        </mat-form-field>
-                    </div>
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 60px;">City : </h3>
-                        <mat-form-field class="city" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="city" readonly>
-                        </mat-form-field>
-                    </div>
-                    <div style="display: flex; flex-direction: row;">
-                        <h3 style="margin-right: 30px;">Pincode : </h3>
-                        <mat-form-field class="pincode" appearance="fill">
-                            <input type="text" matInput class="inputs" formControlName="pincode" readonly>
-                        </mat-form-field>
-                    </div>
-                </div>
-            </mat-grid-tile>
-        </mat-grid-list>
-       
-    </div>
-    <div><mat-divider></mat-divider></div>
-    <div formGroupName="bill">
-        <div formArrayName="menuList">
-            <mat-card class="example-card">
-                <mat-card-content>
-                    <table border="1">
-
-                        <tr><th>Item Name</th> <th>Price</th></tr>
-                        <tr *ngFor="let l of bills.menuList;let i=index" [formGroupName]="i">
-                    
-                        <td>
-                            
-                                {{l.itemName}}
-                            
-                        </td>
-                        <td>
-                            
-                                {{l.price | currency:"INR":"symbol"}}
-                            
-                        </td>
-                        
-                        </tr>
-                
-                    </table>
-                </mat-card-content>
-            </mat-card>
         </div>
-   
+        </div>
         <div><mat-divider></mat-divider></div>
+    
+        <div formGroupName="user">
+            <h1>Order Details</h1>
+            <mat-grid-list cols="2" rowHeight="350px">
+                <mat-grid-tile>
+                    <div>
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 10px;">User Name : </h3>
+                            <mat-form-field class="user-name" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="userName">
+                            </mat-form-field>
+                        </div>
+                        
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 50px;">Email : </h3>
+                            <mat-form-field class="email-id" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="email">
+                            </mat-form-field>
+                        </div>
+                
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 10px;">Contact No : </h3>
+                            <mat-form-field class="phone-no" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="phoneNo">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+                <mat-grid-tile formArrayName="address">
+                    <div *ngFor="let item of add.controls; let i=index" [formGroupName]="i">
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 20px;">home No : </h3>
+                            <mat-form-field class="home-no" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="homeNo">
+                            </mat-form-field>
+                        </div>
+    
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 10px;">Road/Lane : </h3>
+                            <mat-form-field class="road-name" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="roadName">
+                            </mat-form-field>
+                        </div>
+    
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 60px;">City : </h3>
+                            <mat-form-field class="city" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="city">
+                            </mat-form-field>
+                        </div>
+    
+                        <div style="display: flex; flex-direction: row;">
+                            <h3 style="margin-right: 30px;">Pincode : </h3>
+                            <mat-form-field class="pincode" appearance="outline">
+                                <input type="text" matInput class="inputs" formControlName="pincode">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+            
+        </div>
+    
+        <div><mat-divider></mat-divider></div>
+        <div formGroupName="bill">
+            <div formArrayName="menuList">
+        <mat-card class="example-card">
+         <mat-card-content>
+        <table>
+     
+            <tr><th>Item Name</th> <th>Price/Item</th></tr>
+                 <tr *ngFor="let l of bills.menuList;let i=index" [formGroupName]="i">
+                    <!-- <div *ngIf="l.itemName != bills.menuList[i - 1].itemName"> -->
+                    
+                     <td>
+                        <mat-form-field class="pincode" appearance="outline">
+                            <input type="text" readonly matInput class="inputs" value="{{l.itemName}}">
+                           
+                        </mat-form-field>
+                        </td>
+                     <td>
+                        <mat-form-field class="pincode" appearance="outline">
+                            <input type="text" readonly matInput class="inputs" value="{{l.price | currency:'INR'}}">
+                            
+                        </mat-form-field>
+                    </td>
+                    
+                 
+                 </tr>
+            
+         </table>
+         
+          
+
+
+         </mat-card-content></mat-card>
+
+
+
+    </div>
+    
     
         <div>
             <div>
-                <h3>Total : </h3>
-                <mat-form-field class="total-price" appearance="fill">
-                    <input id="payment_field" type="text" matInput class="inputs" formControlName="totalPrice" readonly>
+                <h3>Total Price : </h3>
+                <mat-form-field class="total-price" appearance="outline">
+                    <input id="payment_field" type="text" readonly matInput class="inputs" formControlName="totalPrice">
                     
                 </mat-form-field>
+                <span>*Including 18% GST and 5% Discount...!!!</span>
             </div>
         </div>
-    </div>
-    
-    <button mat-raised-button color="primary" onclick="paymentStart()" style="margin-right: 450px;">Procced To Pay</button>
-    <button mat-raised-button color="primary" mat-dialog-close>Close</button>
-</form>
+        </div>
+        <button mat-raised-button color="primary" (click)="cancleOrder()" style="float: right;margin-right:230px;">Cancle Order</button>
+        <button mat-raised-button color="primary" onclick="paymentStart()" style="margin-right: 450px;">Procced To Pay</button>
+        
+    </form>
     

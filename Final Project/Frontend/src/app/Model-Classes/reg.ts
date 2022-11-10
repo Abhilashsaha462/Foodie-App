@@ -1,4 +1,5 @@
-import { Address } from "./Address";
+import { Address } from "../address";
+import { Restaurant } from "./Restaurant";
 
 export class reg
 {
@@ -8,13 +9,12 @@ export class reg
     phoneNo:string;
     address:Address[];
     // favorites:Restaurant[];
-
     constructor(){
-        this.email="",
-        this.password="",
-        this.userName="",
-        this.phoneNo="",
-        this.address=[]
-        // this.favorites=[]
-    }
+    this.email="",
+    this.password="",
+    this.userName="",
+    this.phoneNo="",
+    this.address=[]
+    // this.favorites=[]
+}
 }

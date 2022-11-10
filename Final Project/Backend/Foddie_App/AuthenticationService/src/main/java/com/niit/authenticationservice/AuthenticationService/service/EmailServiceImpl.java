@@ -15,28 +15,23 @@ import javax.mail.internet.MimeMessage;
 import java.io.File;
 
 @Service
-public class EmailServiceImpl implements EmailService {
-
+public class EmailServiceImpl implements EmailService{
     @Autowired
     private JavaMailSender javaMailSender;
-
     @Value("${spring.mail.username}")
     private String sender;
-
     @Override
     public String sendSimpleEmail(User user) {
-        try {
+        try{
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setFrom(sender);
             mailMessage.setTo(user.getEmail());
-            mailMessage.setText("Congratulations. You have successfully registered to Foodie App.");
-            mailMessage.setSubject("Foodie App Registration");
+            mailMessage.setText("Congratulations...!!! You Have Successfully Registered to Foodie App...!!!");
+            mailMessage.setSubject("Foodie App Registration...!!!");
             javaMailSender.send(mailMessage);
-            return "Mail Sent Successfully";
-        }
-        catch (Exception e)
-        {
-            return "Error while sending mail";
+            return "Mail Sent Successfully...!!!";
+        }catch (Exception e){
+            return "Error while Sending Mail...!!!";
         }
     }
 
@@ -46,18 +41,17 @@ public class EmailServiceImpl implements EmailService {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper;
         try {
-            mimeMessageHelper = new MimeMessageHelper(mimeMessage,true);
+            mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setFrom(sender);
             mimeMessageHelper.setTo(user.getEmail());
-            mimeMessageHelper.setText("Congratulations. You have successfully registered to Foodie App.");
-            mimeMessageHelper.setSubject("Foodie App Registration");
+            mimeMessageHelper.setText(user.getUserName()+"Congratulations...!!! You Have Successfully Registered to Foodie App...!!!");
+            mimeMessageHelper.setSubject("Foodie App Registration...!!!");
             FileSystemResource fileSystemResource = new FileSystemResource(new File(emailDetails.getAttachment()));
             mimeMessageHelper.addAttachment(fileSystemResource.getFilename(),fileSystemResource);
             javaMailSender.send(mimeMessage);
-            return "Mail Sent Successfully";
-        } catch (MessagingException e) {
-            return "Error while sending mail";
+            return "Mail Sent Successfully...!!!";
+        }catch (MessagingException e){
+            return "Error While Sending Mail...!!!";
         }
     }
-
 }

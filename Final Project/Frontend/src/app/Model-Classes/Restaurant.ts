@@ -1,3 +1,4 @@
+import { FileHandle } from "./File-handle.model";
 import { Menu } from "./Menu";
 
 export class Restaurant{
@@ -8,7 +9,6 @@ export class Restaurant{
     url:string;
     menuList:Menu[];
     selected:Boolean;
-    
     constructor(){
         this.restId=0;
         this.restName="";

@@ -18,7 +18,7 @@ public interface AdminService {
 
     public Boolean removeRestaurant(int restId);
 
-    public Admin updateRestaurant(String email,Restaurant restaurant);
-    Admin findByEmailAndPassword(String email,String password)throws AdminNotFoundException;
+    public Admin updateRestaurant(String restaurantId,Restaurant restaurant);
+    Admin findByEmailAndPasswrd(String email,String password)throws AdminNotFoundException;
 
 }

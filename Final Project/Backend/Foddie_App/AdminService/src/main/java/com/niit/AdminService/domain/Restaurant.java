@@ -20,8 +20,7 @@ public class Restaurant {
     private String email;
     private String restName;
     private String city;
-    private List<Menu>menuList;
     private byte[] url;
-
+    private List<Menu>menuList;
 
 }

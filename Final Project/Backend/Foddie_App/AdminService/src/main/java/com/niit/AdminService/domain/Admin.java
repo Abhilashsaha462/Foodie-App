@@ -22,5 +22,4 @@ public class Admin {
     private String userName;
     private String phoneNo;
     private List<Address> address;
-
 }

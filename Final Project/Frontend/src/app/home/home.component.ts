@@ -13,14 +13,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   navToLogin(){
-    this.router.navigateByUrl('/container/login');
+    this.router.navigateByUrl('/login');
   }
   navAdminLog(){
     this.router.navigateByUrl('adminLog')
   }
   ownerRegister(){
-    this.router.navigateByUrl('owner-container')
+    this.router.navigateByUrl('ownerlogin')
   }
-
 
 }

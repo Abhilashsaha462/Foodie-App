@@ -5,7 +5,8 @@ import UserDefinedException.UserAlreadyExistsException;
 import UserDefinedException.UserNotFoundException;
 import com.niit.UserService.Model.Restaurant;
 import com.niit.UserService.Model.User;
-import com.niit.UserService.Proxy.AuthProxy;
+import com.niit.UserService.Proxy.AdminProxy;
+import com.niit.UserService.Proxy.UserProxy;
 import com.niit.UserService.Repository.RestaurantRepository;
 import com.niit.UserService.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +21,15 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService{
 
     private UserRepository userRepository;
-    private AuthProxy authProxy;
+    private UserProxy userProxy;
+    private AdminProxy adminProxy;
     private RestaurantRepository restaurantRepository;
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RestaurantRepository restaurantRepository, AuthProxy authProxy){
+    public UserServiceImpl(UserRepository userRepository, RestaurantRepository restaurantRepository,UserProxy userProxy){
         this.userRepository = userRepository;
         this.restaurantRepository = restaurantRepository;
-        this.authProxy = authProxy;
+        this.userProxy = userProxy;
+        this.adminProxy = adminProxy;
     }
 
     @Override
@@ -34,32 +37,42 @@ public class UserServiceImpl implements UserService{
         if (userRepository.findById(user.getEmail()).isPresent()) {
             throw new UserAlreadyExistsException();
         }
-        ResponseEntity<?> response = authProxy.saveUser(user);
-        if (response.getStatusCodeValue()==201)
-        {
+        ResponseEntity<?> response = userProxy.saveUser(user);
+//        if (response.getStatusCodeValue()==201){
+//            return userRepository.save(user);
+//        }
+//        ResponseEntity<?> responseEntity = userProxy.saveUser(user);
+//        if (responseEntity.getStatusCodeValue()==201){
             return userRepository.save(user);
-        }
-        else {
-        return null;
-      }
+//        }
+//        else {
+//            return null;
+//        }
     }
 
     @Override
     public User addToFavorite(Restaurant restaurant, String email) throws UserNotFoundException {               //Working
         if(userRepository.findById(email).isEmpty()){
             throw new UserNotFoundException();
-        }
-        User user = userRepository.findByEmail(email);
-        if(user.getFavorites() == null){
-            user.setFavorites(Arrays.asList(restaurant));
-        }
-        else{
-            List<Restaurant> tempList = user.getFavorites();
-            tempList.add(restaurant);
-            user.setFavorites(tempList);
-        }
+        }else {
+            User user = userRepository.findByEmail(email);
+            if (user.getFavorites() == null) {
+                user.setFavorites(Arrays.asList(restaurant));
+            } else {
+                List<Restaurant> tempList = user.getFavorites();
+                if (tempList.contains(restaurant.getRestName())) {
+                    System.out.println("Duplicate Entry...");
+                } else if (restaurant.getRestName().isEmpty()) {
+                    System.out.println("Nothig to Save...");
+                } else {
+                    tempList.add(restaurant);
+                    user.setFavorites(tempList);
+                }
+            }
 
-        return userRepository.save(user);
+
+            return userRepository.save(user);
+        }
     }
 
     @Override
@@ -90,7 +103,7 @@ public class UserServiceImpl implements UserService{
         if(userRepository.findById(user.getEmail()).isEmpty()){
             throw new UserNotFoundException();
         }
-        ResponseEntity<?> response = authProxy.updateUserDetailsFunction(user);
+        ResponseEntity<?> response = userProxy.updateUserDetailsFunction(user);
         if (response.getStatusCodeValue()==201){
             return userRepository.save(user);
         }else {
@@ -114,5 +127,38 @@ public class UserServiceImpl implements UserService{
             throw new UserNotFoundException();
         }
         return userRepository.findByEmail(email).getFavorites();
+    }
+    @Override
+    public User addMyList(List<Restaurant> list,String email) throws UserNotFoundException {
+        User user = new User();
+        Restaurant  restaurant = new Restaurant();
+        if(userRepository.findById(email).isEmpty()){
+            throw new UserNotFoundException();
+        }else {
+            if (restaurantRepository.findById(restaurant.getRestId()).isPresent()){
+                user.setFavorites(list);
+                System.out.println("user is,"+user);
+            }else {
+                System.out.println("No restaurant available");
+            }
+        }
+        return user;
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public boolean deleteUser(String email) throws UserNotFoundException {
+        User user = new User();
+        if (userRepository.findById(email).isEmpty()){
+            throw new UserNotFoundException();
+        }else {
+            user = userRepository.findById(email).get();
+            userRepository.delete(user);
+            return true;
+        }
     }
 }

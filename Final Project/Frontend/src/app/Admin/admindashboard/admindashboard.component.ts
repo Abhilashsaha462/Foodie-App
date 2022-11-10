@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from 'src/app/Model-Classes/Restaurant';
-import { User } from 'src/app/Model-Classes/User';
 import { LinkService } from 'src/app/Services/link.service';
+import { User } from 'src/app/Model-Classes/User';
 
 @Component({
   selector: 'app-admindashboard',
@@ -17,7 +17,8 @@ export class AdmindashboardComponent implements OnInit {
     this.getAllRestaurant();
   }
   logout(){
-
+    this.link.adminLoggedOut();
+    window.location.href="/adminLog";
   }
   user:User[]=[];
   getAllUsers(){

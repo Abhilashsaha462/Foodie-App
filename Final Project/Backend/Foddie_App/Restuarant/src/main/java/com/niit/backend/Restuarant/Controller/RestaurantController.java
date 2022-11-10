@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v2")
@@ -44,13 +46,11 @@ public class RestaurantController {
         }
         return responseEntity;
     }
-
     @GetMapping(path = "/search/{restName}")
     public ResponseEntity<?> findRestaurant(@PathVariable String restName, Principal principal)throws RestaurantNotFoundException {
         List<Restaurant> myList = restaurantRepository.findByRestNameContaining(restName);
         return responseEntity = new ResponseEntity(myList,HttpStatus.OK);
     }
-
     @GetMapping("/all")
     public ResponseEntity<?> getAllRestaurants(){
         responseEntity = new ResponseEntity(restaurantService.getAllRestaurants(),HttpStatus.OK);
@@ -82,11 +82,11 @@ public class RestaurantController {
     }
     @GetMapping(path = "/{restName}")
     public ResponseEntity<?> getMyRestaurant(@PathVariable String restName)throws RestaurantNotFoundException{
-
+        System.out.println("Name"+restName);
         try {
-            Restaurant restaurant = restaurantService.findByName(restName);
+          //  Restaurant restaurant = restaurantService.findByName(restName);
 
-            responseEntity = new ResponseEntity<>(restaurantService.findByName(restName),HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(restaurantService.findByName(restName.trim()),HttpStatus.OK);
         }catch (RestaurantNotFoundException e){
             throw new RestaurantNotFoundException();
         }
@@ -140,5 +140,23 @@ public class RestaurantController {
         }
         return  responseEntity;
     }
+//    @GetMapping("/{restName}/restaurant")
+//    public String showContactDetail(@PathVariable("restName") String restName, Model model, Principal principal) {
+//        System.out.println("CID " + restName);
+//        Restaurant restaurant = this.restaurantRepository.findByRestName(restName);
+//
+//        Optional<Restaurant> contactOptional = this.restaurantRepository.findById(restaurant.getRestId());
+//        Restaurant contact = contactOptional.get();
+//
+//        //
+//        String userName = principal.getName();
+//
+//
+//            model.addAttribute("contact", contact);
+//            model.addAttribute("title", contact.getRestName());
+//
+//
+//        return "/display";
+//    }
 
 }

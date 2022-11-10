@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Menu } from 'src/app/Model-Classes/Menu';
 import { Restaurant } from 'src/app/Model-Classes/Restaurant';
 import { LinkService } from 'src/app/Services/link.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-restaurant',
@@ -77,7 +78,7 @@ restaurant:Restaurant=new Restaurant();
     
     this.link.updateRestaurant(u).subscribe((response)=>{
       console.log(response);
-      
+      Swal.fire("Data Saved Successfully...!!!")
     })
 
   }

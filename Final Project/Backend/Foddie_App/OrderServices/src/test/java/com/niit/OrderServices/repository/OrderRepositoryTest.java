@@ -1,5 +1,4 @@
-package com.niit.OrderServices.repository;
-
+package com.niit.OrderServices.Repository;
 import com.niit.OrderServices.Controller.OrderController;
 import com.niit.OrderServices.Model.*;
 import com.niit.OrderServices.Repository.OrderRepository;
@@ -22,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(SpringExtension.class)
 @DataMongoTest
 public class OrderRepositoryTest {
-
     @Autowired
     private OrderRepository orderRepository;
 

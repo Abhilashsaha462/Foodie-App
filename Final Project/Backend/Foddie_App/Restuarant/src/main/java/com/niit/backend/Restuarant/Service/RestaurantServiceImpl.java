@@ -6,28 +6,24 @@ import com.niit.backend.Restuarant.Exception.*;
 import com.niit.backend.Restuarant.Repository.OwnerRepository;
 import com.niit.backend.Restuarant.Repository.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class RestaurantServiceImpl implements RestaurantService{
     @Autowired
     private RestaurantRepository restaurantRepository;
-
     @Autowired
     private OwnerRepository ownerRepository;
-
-
     @Autowired
-    public RestaurantServiceImpl(RestaurantRepository restaurantRepository) {
+    public RestaurantServiceImpl(RestaurantRepository restaurantRepository){
         this.restaurantRepository = restaurantRepository;
     }
-
     @Override
     public Restaurant addRestaurant(Restaurant restaurant,byte[] bytes) throws RestaurantAlreadyExistException {
         if (restaurantRepository.findById(restaurant.getRestId()).isPresent()){
@@ -44,7 +40,9 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Override
     public Restaurant findByName(String restName)throws RestaurantNotFoundException {
+        System.out.println("Service"+restName);
         Restaurant restaurant = restaurantRepository.findByRestName(restName);
+        System.out.println("restaurant"+restaurant);
         if (restaurant.getRestName().equals(restName)){
             System.out.println("Reached...");
             return restaurant;
@@ -129,8 +127,9 @@ public class RestaurantServiceImpl implements RestaurantService{
     @Override
     public List<Restaurant> getRestByEmail(String email) throws RestaurantsNotFoundException {
     List<Restaurant> list = new ArrayList<>();
-    list = restaurantRepository.findByEmailContaining(email);
-    return list;
-    }
+        list = restaurantRepository.findByEmailContaining(email);
 
+   return list;
+
+    }
 }

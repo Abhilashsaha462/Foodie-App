@@ -24,6 +24,4 @@ public class User {
     private String userName, phoneNo;
     private List<Address> address;
     private List<Restaurant> favorites;
-
-
 }

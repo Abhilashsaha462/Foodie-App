@@ -35,15 +35,14 @@ public class RestaurantRepositoryTest {
     @BeforeEach
     public void setUp(){
         menu = new Menu("Biryani",220.00);
-        restaurant = new Restaurant(17,null,"Vrundavan Multi Cuisine Restaurant","Kalyan", new byte[]{(byte) 204, 29, (byte) 207, (byte) 217},menuList);
-        restaurant2 = new Restaurant(55,null,"Gurudev Multi Cuisine Restaurant","Kalyan", new byte[]{(byte) 204, 29, (byte) 207, (byte) 217},menuList);
+        restaurant = new Restaurant(27,"abc123@gmail.com","Vrundavan Multi Cuisine Restaurant","Kalyan", new byte[]{(byte) 204, 29, (byte) 207, (byte) 217},menuList);
+        restaurant2 = new Restaurant(45,"xyz123@gmail.com","Gurudev Multi Cuisine Restaurant","Kalyan", new byte[]{(byte) 204, 29, (byte) 207, (byte) 217},menuList);
     }
     @AfterEach
     public void tearDown(){
         restaurant = null;
         menu = null;
     }
-
     @Test
     public void givenRestaurantToSaveShouldSave()throws Exception{
         restaurantRepository.insert(restaurant);
@@ -51,7 +50,6 @@ public class RestaurantRepositoryTest {
         assertNotNull(restaurant1);
         assertEquals(restaurant.getRestId(),restaurant1.getRestId());
     }
-
     @Test
     public void giveRestaurantIdtoDeleteShouldDeleteRestaurant(){
     restaurantRepository.insert(restaurant2);
@@ -59,5 +57,4 @@ public class RestaurantRepositoryTest {
     restaurantRepository.delete(restaurant1);
     assertEquals(Optional.empty(),restaurantRepository.findById(restaurant2.getRestId()));
     }
-
 }

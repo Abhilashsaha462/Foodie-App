@@ -10,8 +10,8 @@ import com.niit.OrderServices.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService{
@@ -63,8 +63,9 @@ public class OrderServiceImpl implements OrderService{
             order.setOrderId((rand.nextInt(1000000) + 1000000000l) * (rand.nextInt(900) + 100));
             order.setUser(userRepository.findByEmail(email));
             bill.setBillId((rand.nextInt(1000000) + 1000000000l) * (rand.nextInt(900) + 100));
+            double cost = menuList.stream().map(Menu::getPrice).reduce((x, y)->x+y).get();
+            bill.setTotalPrice(cost+(cost*0.18)-(cost*0.05));
             bill.setMenuList(menuList);
-            bill.setTotalPrice(menuList.stream().map(Menu::getPrice).reduce((x, y)->x+y).get());
             order.setBill(bill);
             orderRepository.save(order);
             return order;

@@ -2,8 +2,6 @@ package com.niit.OrderServices.Controller;
 
 import UserDefinedException.OrderAlreadyExistsException;
 import UserDefinedException.OrderNotFoundException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.niit.OrderServices.Model.Menu;
 import com.niit.OrderServices.Model.Order;
 import com.niit.OrderServices.Model.OrderDetails;
@@ -20,8 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import com.razorpay.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/order-services")
@@ -35,7 +35,7 @@ public class OrderController {
     private UserRepository userRepository;
 
     @Autowired
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderService orderService){
         this.orderService = orderService;
     }
 
@@ -44,18 +44,33 @@ public class OrderController {
     public ResponseEntity<?> generateOrderCall(@RequestBody List<Menu> menuList,@PathVariable("email") String email) throws OrderNotFoundException {
         System.out.println(email);
         Order order = orderService.placeOrder(menuList,email);
-            responseEntity = new ResponseEntity(order, HttpStatus.CREATED);
+        List<Menu> mylist = new ArrayList<>();
+        List<Menu> myList1 = new ArrayList<>();
+        double price;
+        price = Math.round(order.getBill().getTotalPrice()*100)/100.0;
+        myList1=menuList.stream().sorted((x,y)->x.getItemName().compareToIgnoreCase(y.getItemName())).collect(Collectors.toList());
+        for(int i=1; i<menuList.size(); i++) {
 
+            if (myList1.get(i).getItemName().equals(myList1.get(i-1).getItemName())) {
+                mylist.remove(myList1.get(i-1));
+                mylist.add(myList1.get(i));
+            } else {
+                mylist.add(myList1.get(i));
+            }
+            order.getBill().setMenuList(mylist);
+            order.getBill().setTotalPrice(price);
 
-        return responseEntity;
+        }
+        return responseEntity = new ResponseEntity(order, HttpStatus.CREATED);
+
     }
 
     //  delete Order
-    @DeleteMapping("order/delete/{orderId}")
+    @DeleteMapping("/order/delete/{orderId}")
     public ResponseEntity<?> cancelOrderCall(@PathVariable long orderId) throws OrderNotFoundException{
         try{
-            orderService.cancelOrder(orderId);
-            responseEntity = new ResponseEntity("Order is Successfully canceled!", HttpStatus.OK);
+
+            responseEntity = new ResponseEntity(orderService.cancelOrder(orderId), HttpStatus.OK);
         }catch (OrderNotFoundException ex){
             throw ex;
         }catch (Exception e){
@@ -89,8 +104,9 @@ public class OrderController {
     public String createOrder(@RequestBody Map<String,Object> data, Principal principal) throws Exception {
        // System.out.println("Order Done...");
         System.out.println(data);
-        int amt = Integer.parseInt(data.get("amount").toString());
-        var client = new RazorpayClient("rzp_test_oocfUH7uXcDpYC","b0CTrn1JBjIIMMEbyCrQYh3b");
+        //int amt = Integer.parseInt(data.get("amount").toString());
+        double amt = Double.parseDouble(data.get("amount").toString());
+        var client = new RazorpayClient("rzp_test_57YwJ8uRgM4FPo","PZHKcLLBzYzT02eAvmiLANWq");
         JSONObject ob = new JSONObject();
         ob.put("amount",amt*100);
         ob.put("currency","INR");

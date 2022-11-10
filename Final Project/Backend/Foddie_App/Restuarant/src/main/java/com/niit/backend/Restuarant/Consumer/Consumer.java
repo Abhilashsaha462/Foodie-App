@@ -11,18 +11,15 @@ import org.springframework.stereotype.Component;
 public class Consumer {
     @Autowired
     private RestaurantServiceImpl restaurantService;
-
     @RabbitListener(queues = "rest_queue")
     public void getDataFromRabbitMq(RestaurantDTO restDTO) throws RestaurantAlreadyExistException {
-        Restaurant rest = new Restaurant();
+        Restaurant rest =new Restaurant();
         rest.setRestId(restDTO.getRestId());
         rest.setRestName(restDTO.getRestName());
         rest.setCity(restDTO.getCity());
         rest.setMenuList(restDTO.getMenuList());
-        rest.setEmail(restDTO.getEmail());
-//        rest.setUrl(restDTO.getUrl());
-        System.out.println("Trying to Save Data into MongoDb..." +rest.getRestName());
+        System.out.println("Trying to Save Data into MySQL..." +rest.getRestName());
         restaurantService.addRestaurant(rest,restDTO.getUrl());
     }
-
 }
+

@@ -18,7 +18,6 @@ public class ApiGatewayApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ApiGatewayApplication.class, args);
 	}
-
 	@Bean
 	public RouteLocator routes(RouteLocatorBuilder builder){
 		return builder.routes().route(p->p.path("/api/v3/**").uri("lb://auth-service"))
@@ -27,7 +26,6 @@ public class ApiGatewayApplication {
 				.route(p->p.path("/user-service/**").uri("lb://user-service/"))
 				.route(p->p.path("/admin-service/**").uri("lb://admin-service")).build();
 	}
-
 	@Bean
 	public FilterRegistrationBean jwtFilter() {
 		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
@@ -35,5 +33,4 @@ public class ApiGatewayApplication {
 		filterRegistrationBean.addUrlPatterns("/api/v3/*");
 		return filterRegistrationBean;
 	}
-
 }

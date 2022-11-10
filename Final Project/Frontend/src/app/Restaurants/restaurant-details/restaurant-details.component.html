@@ -1,138 +1,138 @@
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet">    <!-- font-family: 'Open Sans', sans-serif; -->
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">    <!-- font-family: 'Roboto Condensed', sans-serif;-->
-
-  <script src="../restaurant-details.js" ></script>
-</head>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-toolbar color="primary" class="toolbar">
-    <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
-    <div><span>Foodie</span></div>
-    <!--<div class="search-comps my5">
-      <mat-form-field appearance="fill" class="search-comp my3">
+    <mat-toolbar color="black" class="toolbar">
+        <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
+        <div><span>Foodie</span></div>
+      <!-- <div class="search-comps my5">
+          <mat-form-field appearance="fill" class="search-comp my3">
+            
+              <input (keyup)="f()" id="search-input" type="text" matInput placeholder="Search" style="height: 20px;">
+          </mat-form-field>
         
-          <input (keyup)="f()" id="search-input" type="text" matInput placeholder="Search" style="height: 20px;">
-      </mat-form-field>
-    
-      <select *ngFor="let b of data0;let j=index" id="search-result" class="search-result">
-          <option>{{b.restName}}</option>
-      </select>
-     
-    </div> -->
-     
-    <div class="search-container my-6">
-      <mat-form-field appearance="fill" style="width: 100%; ">
-        <input onkeyup="search()" id="search-input" type="text" class="search" matInput placeholder="Search">
-      </mat-form-field>
-      <div class="search-result">
-
-      </div>
-    </div>
-    <button mat-raised-button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
-  </mat-toolbar>
-
-  <section>
-    <div class="restaurent-details">
-      <div class="grid-container">
-        <mat-grid-list cols="4" rowHeight="300px">
-          <mat-grid-tile *ngFor="let card of restaurant;let i=index" [colspan]="1" [rowspan]="1">
-            <mat-card class="dashboard-card">
-              <mat-card-header>
-                <mat-card-title>
-                  <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu" xPosition="before">
-                    <button mat-menu-item>Expand</button>
-                    <button mat-menu-item>Remove</button>
-                  </mat-menu>
-                </mat-card-title>
-              </mat-card-header>
-              <mat-card-content class="dashboard-card-content">
-                <app-image [image]="card.url" (click)="openRestaurant(card.restName)"></app-image>
-                
-                <h1 class="k">{{card.restName}}</h1>
-                
-                <h3 style="float: right;">- {{card.city}}</h3>
-              </mat-card-content>  
-            </mat-card>
-          </mat-grid-tile>
-        </mat-grid-list>
-      </div>
-    </div>
-
-    <!--<nav aria-label="Page navigation example" style="display: inline;">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-      </ul>
-    </nav>-->
-
-    <!-- <mat-paginator [length]="100"
-                  [pageSize]="10"
-                  [pageSizeOptions]="[5, 10, 25, 100]"
-                  aria-label="Select page">
-    </mat-paginator> -->
-
-  </section>
-
-  <mat-divider></mat-divider>
-
-  <section>
-    <div class="gallery">
-      <div class="gallery-item">
-          
-      </div>
-    </div>
-  </section>
-
-  <mat-divider></mat-divider>
-
-  <footer class="last-container">
-    <mat-grid-list cols="4" rowHeight="300px">
-      <mat-grid-tile>
-        <img src="assets\Main_Logo_2.png" class="main-logo" />
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div>
-          <h1><b>Foodie pvt lmt.</b></h1>
-          <div>1250 24th Street, N.W. Washington, DC 20037</div>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="connections" style="width: 400px; float: left;">
-          <div style="font-family: 'Roboto Condensed', sans-serif; font-size: 20px; margin-bottom: 20px;"><b>CONNECT WITH US</b></div>
-          <div>
-            <img href="#" src="assets\Facebook.png" alt="Facebook" class="social_logo">
-            <img href="#" src="assets\Twitter.png" alt="Twitter" class="social_logo">
-            <img href="#" src="assets\Instagram.png" alt="Instagram" class="social_logo">
-            <img href="#" src="assets\Youtube.png" alt="Youtube" class="social_logo">
+          <select *ngFor="let b of data0;let j=index" id="search-result" class="search-result">
+              <option>{{b.restName}}</option>
+          </select>
+       
+        </div> -->
+      
+        
+      
+        <div class="search-container my-6">
+          <mat-form-field appearance="fill" style="width: 100%;">
+          <input onkeyup="search()" id="search-input" type="search" class="form-control" matInput placeholder="Search">
+        </mat-form-field>
+          <div class="search-result">
           </div>
         </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <div class="desclaimer">Foodie Inc. is a nonprofit, tax-exempt charitable organization (tax ID number 52-1693387) under Section 501(c)(3) of the Internal Revenue Code. Donations are tax-deductible as allowed by law.</div>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </footer>
-  
-  <mat-sidenav #sidenav class="sidenav">
-      <mat-nav-list>
-        <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
-        <a mat-list-item (click)="openProfile()"><mat-icon class="icon-gap">person</mat-icon>Edit Profile</a>
-        <a mat-list-item (click)="toFavList()"><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a>
-        <!-- <a mat-list-item (click)="openRestaurantsDetails()"><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a>
-        <a mat-list-item (click)="editRest()"><mat-icon class="icon-gap">restaurant</mat-icon>Edit Restaurant</a> -->
+      
+
+
+
+        <button mat-stroked-button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
+    </mat-toolbar>
+    <marquee behavior="alternate" direction="" bgcolor="silver" scrollamount="7">ENJOY DELICIUS FOOD ONLY ON FOODIE...!!! 
+      <mat-icon class="icon-gap">local_dining</mat-icon></marquee>
+    <section>
+        <div class="restaurent-details">
+            <div class="grid-container">
+                <mat-grid-list cols="4" rowHeight="270px">
+                  <mat-grid-tile *ngFor="let card of restaurant;let i=index" [colspan]="1" [rowspan]="1">
+                    <mat-card class="dashboard-card">
+                      <mat-card-header>
+                        <mat-card-title>
+                          <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                            <mat-icon>more_vert</mat-icon>
+                          </button>
+                          <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item>Expand</button>
+                            <button mat-menu-item>Remove</button>
+                          </mat-menu>
+                        </mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content class="dashboard-card-content">
+                          <app-image [image]="card.url" (click)="openRestaurant(card.restName)"></app-image>
+                          
+                          <span class="k">{{card.restName}}</span>
+                          <br>
+                          <span>{{card.city}}</span><br><br>
+                      </mat-card-content>
+                      
+                    </mat-card>
+                  </mat-grid-tile>
+                </mat-grid-list>
+              </div>
+
+        </div>
+
         
-      </mat-nav-list>
-  </mat-sidenav>
+
+        <nav aria-label="Page navigation example" style="display: inline;">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+
+        <!-- <mat-paginator [length]="100"
+                      [pageSize]="10"
+                      [pageSizeOptions]="[5, 10, 25, 100]"
+                      aria-label="Select page">
+        </mat-paginator> -->
+
+    </section>
+
+
+    <mat-divider></mat-divider>
+    <section>
+        <div class="gallery">
+            <div class="gallery-item">
+                
+            </div>
+        </div>
+    </section>
+
+    <mat-divider></mat-divider>
+
+    <footer class="last-container">
+      <mat-grid-list cols="4" rowHeight="300px">
+        <mat-grid-tile>
+          <img src="assets\Main_Logo_2.png" class="main-logo" />
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <h1><b>Foodie pvt lmt.</b></h1>
+            <div>1250 24th Street, N.W. Washington, DC 20037</div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="connections" style="width: 400px; float: left;">
+            <div style="font-family: 'Roboto Condensed', sans-serif; font-size: 20px; margin-bottom: 20px;"><b>CONNECT WITH US</b></div>
+            <div>
+              <img href="#" src="assets\Facebook.png" alt="Facebook" class="social_logo">
+              <img href="#" src="assets\Twitter.png" alt="Twitter" class="social_logo">
+              <img href="#" src="assets\Instagram.png" alt="Instagram" class="social_logo">
+              <img href="#" src="assets\Youtube.png" alt="Youtube" class="social_logo">
+            </div>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="desclaimer">Foodie Inc. is a nonprofit, tax-exempt charitable organization (tax ID number 52-1693387) under Section 501(c)(3) of the Internal Revenue Code. Donations are tax-deductible as allowed by law.</div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </footer>
+    
+
+    <mat-sidenav #sidenav class="sidenav">
+        <mat-nav-list>
+            <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
+            <a mat-list-item (click)="openProfile()"><mat-icon class="icon-gap">person</mat-icon>Edit Profile</a>
+            <a mat-list-item (click)="toFavList()"><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a>
+            <!-- <a mat-list-item (click)="openRestaurantsDetails()"><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a>
+            <a mat-list-item (click)="editRest()"><mat-icon class="icon-gap">restaurant</mat-icon>Edit Restaurant</a> -->
+            
+        </mat-nav-list>
+    </mat-sidenav>
 </mat-sidenav-container>

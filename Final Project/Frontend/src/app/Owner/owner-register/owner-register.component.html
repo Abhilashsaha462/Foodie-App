@@ -1,12 +1,13 @@
-<!--<mat-toolbar color="primary">
+<mat-toolbar color="primary">
     <button mat-stroked-button (click)="navToHome()">Home</button>
-    </mat-toolbar>-->
-    
+    <button mat-stroked-button type="button" (click)="ownerLogin()" style="margin-left: 1300px;">Login</button>
+    </mat-toolbar>
+    <div class="a">
     <form class="register-form" (submit)="registerfun()" [formGroup]="RegistryForm"><br><br>
         <div>
-            <h1>
+            <h2>
                 Restaurant Owner Registration
-            </h1>
+            </h2>
         </div>
         <div>
             <mat-form-field class="example-full-width" appearance="fill">
@@ -42,7 +43,7 @@
             <!--<div class="ErrMsg" *ngIf="RegistryForm.controls['phoneNo'].hasError('required')">Password is Mandatory !</div>-->
             <div class="ErrMsg" *ngIf="RegistryForm.controls['gstNo'].hasError('pattern')">GST No format is incorrect! Please try again!</div>
         </div>
-        <div><mat-divider></mat-divider></div>
+        <!-- <div><mat-divider></mat-divider></div> -->
         <div><h1>Address Details:</h1></div>
         <div formArrayName="address">
             <div *ngFor="let item of add.controls; let i=index" [formGroupName]="i">
@@ -67,8 +68,8 @@
               <mat-form-field class="example-full-width" appearance="fill">
                   <input id="pincode" type="number" matInput placeholder="Enter PinCode" formControlName="pincode">
               </mat-form-field>
-          </div></div><br>
-        <button mat-raised-button type="submit" color="primary" class="register-button" [disabled]="RegistryForm.invalid">Register</button>
-        <button mat-raised-button type="button" (click)="ownerLogin()" color="primary">Login</button>
-</form>
+          </div></div>
+        <button mat-stroked-button type="submit" style="margin-left: 0px;">Register</button>
+       
+    </form></div>
     

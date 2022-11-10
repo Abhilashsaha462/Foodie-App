@@ -3,6 +3,8 @@ package com.niit.UserService.Controller;
 import UserDefinedException.RestaurantNotFoundException;
 import UserDefinedException.UserAlreadyExistsException;
 import UserDefinedException.UserNotFoundException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.niit.UserService.Model.EmailDetails;
 import com.niit.UserService.Model.Restaurant;
 import com.niit.UserService.Model.User;
 import com.niit.UserService.Services.UserService;
@@ -12,6 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.DataInput;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -28,7 +32,7 @@ public class UserController {
 
     //  Register a New User
     @PostMapping("user/register")
-    public ResponseEntity<?> registerUserFunction(@RequestBody User user) throws UserAlreadyExistsException{
+    public ResponseEntity<?> registerUserFunction(@RequestBody User user) throws UserAlreadyExistsException {
         try{
             userService.register(user);
             responseEntity = new ResponseEntity(user, HttpStatus.CREATED);
@@ -46,6 +50,7 @@ public class UserController {
     @PutMapping("user/favorite/add/{email}")
     public ResponseEntity<?> addToFavoriteFunction(@RequestBody Restaurant restaurant, @PathVariable String email) throws UserNotFoundException{
         try{
+            //Restaurant restaurant = new ObjectMapper().readValue(details,Restaurant.class);
             User user = userService.addToFavorite(restaurant, email);
             responseEntity = new ResponseEntity(user, HttpStatus.CREATED);
         }catch (UserNotFoundException ex1){
@@ -107,7 +112,6 @@ public class UserController {
 
         return responseEntity;
     }
-
     @GetMapping("get/{email}")
     public ResponseEntity<?> showUser(@PathVariable String email)throws UserNotFoundException{
         try {
@@ -117,6 +121,22 @@ public class UserController {
             throw e;
         }catch (Exception e){
             responseEntity = new ResponseEntity("Error While Getting the User...", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return responseEntity;
+    }
+    @GetMapping("getAll")
+    public ResponseEntity<?> getAll(){
+        responseEntity = new ResponseEntity(userService.getAllUsers(),HttpStatus.OK);
+        return responseEntity;
+    }
+    @DeleteMapping("remove/{email}")
+    public ResponseEntity<?> deteteUser(@PathVariable String email)throws UserNotFoundException{
+        try {
+            responseEntity = new ResponseEntity(userService.deleteUser(email),HttpStatus.OK);
+        }catch (UserNotFoundException e){
+            throw new UserNotFoundException();
+        }catch (Exception exception){
+            responseEntity = new ResponseEntity("Error While Removing User...!!!",HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return responseEntity;
     }

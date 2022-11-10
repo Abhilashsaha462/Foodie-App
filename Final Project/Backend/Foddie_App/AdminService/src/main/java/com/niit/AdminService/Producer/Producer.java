@@ -10,16 +10,12 @@ import org.springframework.stereotype.Component;
 public class Producer {
     private RabbitTemplate rabbitTemplate;
     private DirectExchange directExchange;
-
     @Autowired
     Producer(RabbitTemplate rabbitTemplate,DirectExchange directExchange){
         this.rabbitTemplate = rabbitTemplate;
         this.directExchange = directExchange;
     }
-
     public void sendMessageToRabbitmq(RestaurantDTO restDTO){
-        System.out.println("Producer Called");
         rabbitTemplate.convertAndSend(directExchange.getName(),"rest_routing",restDTO);
     }
-
 }

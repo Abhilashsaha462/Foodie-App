@@ -24,6 +24,7 @@ public class AdminController {
 
     private AdminService adminService;
 
+
     private ResponseEntity responseEntity;
 
     public AdminController(AdminService adminService) {
@@ -32,15 +33,16 @@ public class AdminController {
 
     @PostMapping("/register")
     public  ResponseEntity<?> registerUser(@RequestBody Admin admin) throws AdminAlreadyExistsException {
-        return new ResponseEntity<>(adminService.registerUser(admin), HttpStatus.CREATED);
+        return new ResponseEntity<>(adminService.registerUser(admin), HttpStatus.OK);
     }
 
     @PostMapping("/admin/restaurantName")
     public ResponseEntity<?> addNewRestaurant(@RequestParam("file") MultipartFile file, @RequestParam("details") String details)throws RestaurantAlreadyExistsException {
         try {
+            System.out.println("Controller");
             Restaurant restaurant = new ObjectMapper().readValue(details,Restaurant.class);
 //            Restaurant restaurant = gson.fromJson(details,Restaurant.class);
-            responseEntity = new ResponseEntity(adminService.addRestaurant(restaurant, file.getBytes()), HttpStatus.CREATED);
+            responseEntity = new ResponseEntity(adminService.addRestaurant(restaurant,file.getBytes()), HttpStatus.CREATED);
         }catch (RestaurantAlreadyExistsException e){
             throw new RestaurantAlreadyExistsException();
         } catch (IOException e) {
@@ -54,26 +56,25 @@ public class AdminController {
         return new ResponseEntity<>(adminService.removeRestaurant(restid), HttpStatus.OK);
     }
 
-    @PutMapping("/updateRestaurant/{email}")
-    public ResponseEntity<?> updateRestaurant(@PathVariable String email,@RequestBody Restaurant restaurant){
-        return new ResponseEntity<>(adminService.updateRestaurant(email,restaurant), HttpStatus.OK);
+    @PutMapping("/updateRestaurant/{restaurantId}")
+    public ResponseEntity<?> updateRestaurant(@PathVariable String restaurantId,@RequestBody Restaurant restaurant){
+        return new ResponseEntity<>(adminService.updateRestaurant(restaurantId,restaurant), HttpStatus.OK);
     }
 
     @PostMapping("/user/register")
     public ResponseEntity<?> addUser(@RequestBody User user) throws UserAlreadyExistsException {
         return new ResponseEntity<>(adminService.addUser(user), HttpStatus.OK);
     }
-
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody Admin user) throws AdminNotFoundException {
-        System.out.println(user);
+    public ResponseEntity<?> loginUser(@RequestBody Admin admin) throws AdminNotFoundException {
+       // System.out.println(admin);
         Map<String, String> map = null;
         try {
-            Admin userObj = adminService.findByEmailAndPassword(user.getEmail(), user.getPassword());
-            if (userObj.getEmail().equals(user.getEmail())) {
+            Admin userObj = adminService.findByEmailAndPasswrd(admin.getEmail(),admin.getPassword());
 
-                responseEntity = new ResponseEntity(user, HttpStatus.OK);
-            }
+            System.out.println("here"+userObj);
+                responseEntity = new ResponseEntity(admin, HttpStatus.OK);
+
         } catch (AdminNotFoundException e) {
             throw new AdminNotFoundException();
         } catch (Exception e) {

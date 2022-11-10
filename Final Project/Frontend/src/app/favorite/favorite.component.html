@@ -1,5 +1,11 @@
 
 <mat-sidenav-container class="sidenav-container">
+    <mat-toolbar color="primary" class="toolbar">
+        <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
+        <div><span>Foodie</span></div>
+        <button mat-stroked-button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
+    </mat-toolbar>
+
     <section>
         <div class="restaurent-details">
             <div class="grid-container">
@@ -74,10 +80,10 @@
         <mat-nav-list>
             <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
             <a mat-list-item (click)="openProfile()"><mat-icon class="icon-gap">person</mat-icon>Edit Profile</a>
-            <a mat-list-item (click)="toFavList()"><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a>
-            <a mat-list-item (click)="openRestaurantsDetails()"><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a>
-            <a mat-list-item (click)="editRest()"><mat-icon class="icon-gap">restaurant</mat-icon>Edit Restaurant</a>
-            <a mat-list-item (click)="dashProfile()"><mat-icon class="icon-gap">person</mat-icon>DashBoard</a>
+            <!-- <a mat-list-item (click)="toFavList()"><mat-icon class="icon-gap">favorites</mat-icon>Favorites</a> -->
+            <!-- <a mat-list-item (click)="openRestaurantsDetails()"><mat-icon class="icon-gap">local_dining</mat-icon>Add Restaurants</a> -->
+            <!-- <a mat-list-item (click)="editRest()"><mat-icon class="icon-gap">restaurant</mat-icon>Edit Restaurant</a> -->
+            <!-- <a mat-list-item (click)="dashProfile()"><mat-icon class="icon-gap">person</mat-icon>DashBoard</a> -->
             
         </mat-nav-list>
     </mat-sidenav>

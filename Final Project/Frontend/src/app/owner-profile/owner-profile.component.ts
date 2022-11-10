@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { LinkService } from '../Services/link.service';
 
 @Component({
@@ -10,22 +11,21 @@ import { LinkService } from '../Services/link.service';
   styleUrls: ['./owner-profile.component.css']
 })
 export class OwnerProfileComponent implements OnInit {
-
   EditForm : FormGroup;
   items!:FormArray;
   constructor(private formbuilder:FormBuilder,public dialogRef: MatDialogRef<OwnerProfileComponent>,private link:LinkService,
-    private avtivate:ActivatedRoute) {
+    private avtivate:ActivatedRoute,private router:Router) {
     this.EditForm=this.formbuilder.group({
-      userName:new FormControl(''),
+      userName:new FormControl('',[Validators.required]),
       email:new FormControl('',[Validators.required]),
-      password:new FormControl('',[Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/)]),
-      phoneNo:new FormControl('',[Validators.required, Validators.pattern(/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/)]),
+      password:new FormControl('',[Validators.required,Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/)]),
+      phoneNo:new FormControl('',[Validators.required]),
       address:this.formbuilder.array([
         this.formbuilder.group({
           homeNo:new FormControl('',[Validators.required]),
           roadName:new FormControl('',[Validators.required]),
           city:new FormControl('',[Validators.required]),
-          pincode:new FormControl('',[Validators.required, Validators.pattern(/^\d+$/)])
+          pincode:new FormControl('',[Validators.required])
         })
       ]),
       favorites:this.formbuilder.array([
@@ -55,13 +55,16 @@ export class OwnerProfileComponent implements OnInit {
     if(this.email1==regData.email){
       this.link.updateUser(regData).subscribe((x)=>{
         this.data1=x;
-        alert("Your Changes Updated Successfully...!!!");
+        
+        Swal.fire("Your Changes Updated Successfully...!!!")
         console.log("Updated data",this.data1);
-       // window.location.href="/restaurants-details";
-        this.dialogRef.close();
+      //  window.location.href="/restaurants-details";
+      this.router.navigateByUrl("/restaurants-details")
+        
       })
     }else{
-      alert("Invalid Email, Try Again Later...!!!")
+      
+      Swal.fire("Invalid Email...!!!","Try Again Later...!!!","error")
     }
   }
   get add() {
@@ -84,8 +87,8 @@ export class OwnerProfileComponent implements OnInit {
   }
 
   cancelation(): void {
-    // window.location.href="/restaurants-details";
-    this.dialogRef.close();
+    window.location.href="/restaurants-details";
+    // this.dialogRef.close();
   }
 
 }

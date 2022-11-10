@@ -12,6 +12,7 @@ div{
 
 .email{
     margin-left: 100px;
+    width: 300px;
 }
 
 .password{
@@ -20,6 +21,7 @@ div{
 
 .road{
     margin-left: 100px;
+    width: 250px;
 }
 
 .pincode{
@@ -27,9 +29,5 @@ div{
 }
 
 .cancel-button{
-    margin-left: 350px;
-}
-
-mat-divider{
-    margin-right: 45px;
+    margin-left: 400px;
 }

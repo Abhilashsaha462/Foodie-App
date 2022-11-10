@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { LinkService } from '../Services/link.service';
 
 @Injectable({
@@ -14,9 +15,10 @@ export class OwnerLoginGuard implements CanActivate {
       if(this.login.isOwnerLoggedIn()){
         return true;
       }else{
-        alert("You Need To Log in first...!!!")
+        Swal.fire("You Cant access this Page...","You need to log in First","error");
         this.router.navigate(['ownerlogin'])
         return false;
       }
   }
+  
 }

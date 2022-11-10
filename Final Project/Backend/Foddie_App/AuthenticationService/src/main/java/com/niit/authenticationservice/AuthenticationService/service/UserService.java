@@ -10,6 +10,6 @@ public interface UserService {
 
     public User findByEmailAndPassword(String email,String password) throws UserNotFoundException;
     public User updateUser(User user)throws UserNotFoundException;
-
+    public User forgotPassword(User user)throws UserNotFoundException;
 
 }

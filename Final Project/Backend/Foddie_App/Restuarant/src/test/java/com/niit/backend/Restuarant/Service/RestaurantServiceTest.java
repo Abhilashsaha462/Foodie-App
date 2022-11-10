@@ -36,8 +36,8 @@ public class RestaurantServiceTest {
         menu1 = new Menu("Mutter Paneer",200.00);
         menu2 = new Menu("Aaloo Mutter",160.00);
         menuList = Arrays.asList(menu1,menu2);
-        restaurant1 = new Restaurant(101,null,"Vrundavan Multi Cuisine Restaurant","Kalyan",bytes,menuList);
-        restaurant2 = new Restaurant(102,null,"Gurudev Snacks Corner","Thane",bytes,menuList);
+        restaurant1 = new Restaurant(101,"abc123@gmail.com","Vrundavan Multi Cuisine Restaurant","Kalyan",bytes,menuList);
+        restaurant2 = new Restaurant(102,"xyz123@gmail.com","Gurudev Snacks Corner","Thane",bytes,menuList);
     }
     @AfterEach
     public void tearDown(){

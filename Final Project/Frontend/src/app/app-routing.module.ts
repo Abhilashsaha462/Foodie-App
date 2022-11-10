@@ -4,15 +4,16 @@ import { AdmindashboardComponent } from './Admin/admindashboard/admindashboard.c
 import { AdminloginComponent } from './Admin/adminlogin/adminlogin.component';
 import { ContainerComponent } from './container/container.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminGuard } from './Guards/admin.guard';
 import { LoginGuard } from './Guards/login.guard';
 import { OwnerLoginGuard } from './Guards/owner-login.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { OwnerContainerComponent } from './Owner/owner-container/owner-container.component';
-import { OwnerDataComponent } from './Owner/owner-data/owner-data.component';
+import { OrderComponent } from './order/order.component';
 import { OwnerLoginComponent } from './Owner/owner-login/owner-login.component';
 import { OwnerRegisterComponent } from './Owner/owner-register/owner-register.component';
+import { OwnerdataComponent } from './Owner/ownerdata/ownerdata.component';
 import { RegisterComponent } from './register/register.component';
 import { DisplayRestaurantComponent } from './Restaurants/display-restaurant/display-restaurant.component';
 import { RestaurantDetailsComponent } from './Restaurants/restaurant-details/restaurant-details.component';
@@ -38,11 +39,13 @@ const routes: Routes = [
   {
     path : 'editrestaurant',
     component : RestaurantComponent,
-    pathMatch:'full'
+    pathMatch:'full',
+    canActivate: [LoginGuard]
   },
   {
     path : 'restaurants-details',
-    component : RestaurantDetailsComponent
+    component : RestaurantDetailsComponent,
+    canActivate: [LoginGuard]
   },
   {
     path : 'favorites',
@@ -67,8 +70,13 @@ const routes: Routes = [
     canActivate:[AdminGuard]
   },
   {
+    path: 'forgot',
+    component: ForgotPasswordComponent,
+    pathMatch:'full'
+  },
+  {
     path: 'ownerdash',
-    component:OwnerDataComponent,
+    component:OwnerdataComponent,
     pathMatch:'full',
     canActivate:[OwnerLoginGuard]
   },
@@ -78,9 +86,21 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
+    path : 'register',
+    component : RegisterComponent
+  },
+  {
+    path : 'login',
+    component : LoginComponent
+  },
+  {
     path:'ownerlogin',
     component:OwnerLoginComponent,
     pathMatch:'full'
+  },
+  {
+    path: 'order',
+    component:OrderComponent
   },
   {
     path : 'container',
@@ -90,34 +110,10 @@ const routes: Routes = [
         path : '',
         component : LoginComponent
       },
-      {
-        path : 'login',
-        component : LoginComponent
-      },
-      {
-        path : 'register',
-        component : RegisterComponent
-      }
+      
     ]
   },
-  {
-    path : 'owner-container',
-    component : OwnerContainerComponent,
-    children : [
-      {
-        path : '',
-        component : OwnerLoginComponent
-      },
-      {
-        path : 'owner-login',
-        component : OwnerLoginComponent
-      },
-      {
-        path : 'owner-register',
-        component : OwnerRegisterComponent
-      }
-    ]
-  }
+ 
 ];
 
 @NgModule({

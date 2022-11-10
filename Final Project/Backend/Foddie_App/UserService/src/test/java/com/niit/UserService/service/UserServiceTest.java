@@ -1,5 +1,4 @@
-package com.niit.UserService.service;
-
+package com.niit.UserService.Service;
 import UserDefinedException.UserAlreadyExistsException;
 import com.niit.UserService.Model.Address;
 import com.niit.UserService.Model.Menu;
@@ -57,8 +56,8 @@ public class UserServiceTest {
         menu1 = new Menu("Chicken Biriyani",90.0);
         menu2 = new Menu("Butter Nan",70.0);
 //        menuList = Arrays.asList(menu1,menu2);
-        restaurant1 = new Restaurant(1001,"Ranjit Hotel","Siliguri",null);
-        restaurant2 = new Restaurant(1002,"Zaika Biriyani","Kolkata",null);
+        restaurant1 = new Restaurant(1001,"Ranjit Hotel","Siliguri");
+        restaurant2 = new Restaurant(1002,"Zaika Biriyani","Kolkata");
         favorites = Arrays.asList(restaurant1,restaurant2);
     }
 
@@ -76,10 +75,5 @@ public class UserServiceTest {
         verify(userRepository,times(1)).save(any());
         verify(userRepository,times(1)).findById(any());
     }
-
-//    @Test
-//    public void givenUserToDelete() {
-//        when(userRepository.findById(user2.getEmail())).thenReturn(Optional.of(user2));
-//    }
 
 }

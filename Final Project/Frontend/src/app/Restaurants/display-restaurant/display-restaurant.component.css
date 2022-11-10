@@ -20,26 +20,23 @@ th {
     padding: 8px;
 }
 
-/*tr:nth-child(even) {
-    background-color: green;
+tr:nth-child(even) {
+    background-color:
+        #dddddd;
 }
 
-tr:nth-child(odd) {
-  background-color: rgb(5, 75, 5);
-}*/
-
 .btn {
-  background:
-      rgb(94, 0, 0);
-  border-radius: 50%;
-  font-size: 16px;
-  color: #fff;
-  margin: 0 8px;
+    background:
+        rgb(94, 0, 0);
+    border-radius: 50%;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 8px;
 }
 
 .content span {
-  font-weight: 800;
-  font-size: 18px;
+    font-weight: 800;
+    font-size: 18px;
 }
 
 .cart_section h3 {
@@ -95,45 +92,45 @@ tr:nth-child(odd) {
 }
 .grid-container {
     margin: 20px;
-}
+  }
   
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-}
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.dashboard-card-content {
-  text-align: center;
-}
-.k{
-  font-style: Georgia (serif);
-  font-size: larger;font-weight: bold;
-}
-.example-button-container {
-  display: flex;
-  /* justify-content: center; */
-  /* width: 120px; */
-  position:relative;margin-top: -190px;float: left;margin-left: -20px;
-}
-.fav{
-  text-decoration-color: red;
-}
-notfav{
-  color: red;
-}
-.search-comp{
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
   
-  width: 400px;
-  margin-left: 5%;
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+  }
+  .k{
+    font-style: Georgia (serif);
+    font-size: larger;font-weight: bold;
+  }
+  .example-button-container {
+    display: flex;
+    /* justify-content: center; */
+    /* width: 120px; */
+    position:relative;margin-top: -190px;float: left;margin-left: -20px;
+  }
+  .fav{
+    text-decoration-color: red;
+  }
+  notfav{
+    color: red;
+  }
+  .search-comp{
+    
+    width: 400px;
+    margin-left: 5%;
 }
 .search-comps{
   position: static;
@@ -158,14 +155,4 @@ notfav{
 }
 .toolbar{
     width: 100%;
-}
-
-.content{
-  width: 200px;
-  border: 3px solid white;
-  text-align: center;
-}
-
-.cancel-button{
-  margin-left: 70%;
 }

@@ -5,17 +5,18 @@ import lombok.*;
 
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class RestaurantDTO {
-    private int restId;
-    private String email;
-    private String restName;
-    private String city;
-    private List<Menu> menuList;
-    private byte[] url;
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @ToString
+    public class RestaurantDTO {
+        private int restId;
+        private String email;
+        private String restName;
+        private String city;
+        private byte[] url;
+        private List<Menu> menuList;
+
     }
 

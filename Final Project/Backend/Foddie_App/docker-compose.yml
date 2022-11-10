@@ -1,0 +1,102 @@
+version: '3.3'
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    container_name: mongodbservice
+    network_mode: host
+  mysql:
+    image: mysql:5.5
+    ports:
+      - 3306:3306
+    container_name: mysqlservice
+    network_mode: host
+    hostname: localhost
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USERNAME: user
+      MYSQL_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  eurekaServer:
+    image: eureka-server
+    build: Eureka/
+    restart: "no"
+    network_mode: host
+    environment:
+      EUREKA_SERVER_PORT: 8761
+    ports:
+      - 8761:8761
+  cloudapiservice:
+    image: cloud-api-service
+    build: ApiGateway/
+    restart: "no"
+    network_mode: host
+    ports:
+      - 9000:9000
+    environment:
+      API_GATEWAY_PORT: 9000
+      EUREKA_SERVER_IP: localhost
+      EUREKA_SERVER_PORT: 8761
+    depends_on:
+      - eurekaServer
+  userauthenticationservice:
+    container_name: user-authentication-service
+    build: AuthenticationService/
+    hostname: localhost
+    ports:
+      - 8085:8085
+    restart: "no"
+    depends_on:
+      - mysql
+      - eurekaServer
+      - cloudapiservice
+    network_mode: host
+  adminservice:
+    container_name: admin-service
+    build: AdminService/
+    hostname: localhost
+    ports:
+      - 8090:8090
+    restart: "no"
+    depends_on:
+      - mongo
+      - eurekaServer
+      - cloudapiservice
+    network_mode: host
+  orderservices:
+    container_name: order-services
+    build: OrderServices/
+    hostname: localhost
+    ports:
+      - 8083:8083
+    restart: "no"
+    depends_on:
+      - mongo
+      - eurekaServer
+      - cloudapiservice
+    network_mode: host
+  restuarant:
+    container_name: restuarant
+    build: Restuarant/
+    hostname: localhost
+    ports:
+      - 8088:8088
+    restart: "no"
+    depends_on:
+      - mongo
+      - eurekaServer
+      - cloudapiservice
+    network_mode: host
+  userservice:
+    container_name: user-service
+    build: UserService/
+    hostname: localhost
+    ports:
+      - 8081:8081
+    restart: "no"
+    depends_on:
+      - mongo
+      - eurekaServer
+      - cloudapiservice
+    network_mode: host

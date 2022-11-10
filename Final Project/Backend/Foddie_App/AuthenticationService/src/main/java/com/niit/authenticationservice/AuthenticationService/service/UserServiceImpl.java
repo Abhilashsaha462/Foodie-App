@@ -38,6 +38,24 @@ public class UserServiceImpl implements UserService{
         if (userRepository.findById(user.getEmail()).isEmpty()){
             throw new UserNotFoundException();
         }
+        User user1 = userRepository.findById(user.getEmail()).get();
+        if (user.getPassword()==null) {
+            user.setPassword(user1.getPassword());
+            userRepository.save(user);
+        }
         return userRepository.save(user);
+    }
+
+    @Override
+    public User forgotPassword(User user) throws UserNotFoundException {
+        if (userRepository.findById(user.getEmail()).isEmpty()){
+            throw new UserNotFoundException();
+        }else {
+            User user1 = userRepository.findById(user.getEmail()).get();
+            user1.setEmail(user1.getEmail());
+            user1.setUserName(user1.getUserName());
+            user1.setPassword(user.getPassword());
+         return userRepository.save(user1);
+        }
     }
 }

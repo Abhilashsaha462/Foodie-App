@@ -1,21 +1,21 @@
-<head>
+<!-- <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet">
 </head>
-<!--<mat-toolbar color="primary">
+<mat-toolbar color="primary">
     <h1 class="title">Foodie</h1>
     <button mat-raised-button class="goBack" color="primary" (click)="navToHome()"><mat-icon>logout</mat-icon>Go Back</button>
-</mat-toolbar>-->
-
+</mat-toolbar>
+<div class="a">
 <section style="text-align: center;">
     <img src="assets\Main_Logo_3.png" class="main-logo-3">
 </section>
 <form [formGroup]="LoginForm" class="login-form" (submit)="loginFun()">
     <div>
-        <h1>
+        <span>
             Login
-        </h1>
+        </span>
     </div>
     <div>
         <mat-form-field class="email" appearance="fill">
@@ -33,7 +33,51 @@
         <div class="ErrMsg" *ngIf="LoginForm.controls['password'].hasError('required')"> Password is Mandatory </div>
     </div>
 
-    <button mat-raised-button type="submit" color="primary" class="login-button" [disabled]="LoginForm.invalid">Login</button>
+    <button mat-raised-button type="submit" color="primary" class="b">Login</button>
     <button mat-raised-button color="primary" (click)="navToRegisterComp()">Register</button>
-</form>
+</form></div> -->
+
+
+<div class="bg-img">
+    <div class="content">
+       <header>Login</header>
+       <form [formGroup]="LoginForm" class="login-form" (submit)="loginFun()">
+          <div class="field">
+             <span class="fa fa-user"></span>
+             <input type="email" required placeholder="Email or Phone" formControlName="email">
+          </div>
+          <div class="field space">
+             <span class="fa fa-lock"></span>
+             <input type="password" class="pass-key" required placeholder="Password" formControlName="password">
+             <!-- <span class="show">SHOW</span> -->
+          </div>
+          <!-- <div class="pass">
+             <a href="#">Forgot Password?</a>
+          </div> -->
+          <div class="field">
+             <input type="submit" value="LOGIN">
+          </div>
+       </form>
+       <!-- <div class="login">
+          Or login with
+       </div>
+       <div class="links">
+          <div class="facebook">
+             <i class="fab fa-facebook-f"><span>Facebook</span></i>
+          </div>
+          <div class="instagram">
+             <i class="fab fa-instagram"><span>Instagram</span></i>
+          </div>
+       </div> -->
+       <div class="signup">
+          Don't have account?
+          <a href="/ownerregister">Signup Now</a>
+       </div>
+       <div class="signup">
+        Wan't to go back?
+        <a href="">Home</a>
+     </div>
+    </div>
+ </div>
+
 

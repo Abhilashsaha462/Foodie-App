@@ -1,5 +1,4 @@
-package com.niit.OrderServices.service;
-
+package com.niit.OrderServices.Service;
 import UserDefinedException.OrderAlreadyExistsException;
 import UserDefinedException.OrderNotFoundException;
 import com.niit.OrderServices.Controller.OrderController;
@@ -24,7 +23,6 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class OrderServiceTest {
-
     @Mock
     private OrderRepository orderRepository;
 
@@ -89,5 +87,4 @@ public class OrderServiceTest {
 //        when(orderRepository.findById(order2.getOrderId())).thenReturn(Optional.of(order2));
 //
 //    }
-
 }

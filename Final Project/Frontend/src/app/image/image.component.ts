@@ -9,13 +9,15 @@ import { LinkService } from '../Services/link.service';
 export class ImageComponent implements OnInit {
 
   constructor(private link:LinkService) { }
-  
   @Input()
   image:string="";
   retriewImage:any;
   ngOnInit(): void {
     this.retriewImage = 'data:image/jpg;base64,' +this.image;
-    console.log(this.image);
+    // console.log(this.image);
+    // this.link.getRestaurant(this.image).subscribe(x=>{
+    //   this.retriewImage='data:image/jpg;base64,' +x.url
+    // })
     
   }
 

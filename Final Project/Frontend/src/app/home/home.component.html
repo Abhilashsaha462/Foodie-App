@@ -12,44 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container color="accent" class="sidenav-container">
     
-    <mat-toolbar color="warm" class="toolbar">
+    <mat-toolbar color="primary" class="toolbar">
         <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
         <div><span>Foodie</span></div>
     </mat-toolbar>
+    <marquee behavior="" direction="" scrollamount="5">Please Log in to access Restaurants & Cuisine...!!! 
+        <mat-icon class="icon-gap">local_dining</mat-icon></marquee>
     
-    <div>
-        <div class="home-gallery">
-            <img class="main-logo" src="assets\Main_Logo_2.png">
-        </div>
-    </div>
-    <div><h1 class="font" style="color: greenyellow;">Mouth Watering Cuisine !</h1></div>
-    <div class="cuisine-div">
-        <div>
-            <img src="assets\Indian_Logo.jpg" class="img-size">
-        </div>
-        <div>
-            <img src="assets\Italian_Logo.jpg" class="img-size">
-        </div>
-        <div>
-            <img src="assets\Healthy_Logo.jpg" class="img-size">
-        </div>
-        <div>
-            <img src="assets\Chinese_logo.jpg" class="img-size">
-        </div>
-        <div>
-            <img src="assets\Bakery_Logo.jpg" class="img-size">
-        </div>
-        <div>
-            <img src="assets\Beverage_logo.png" class="img-size">
-        </div>
-        <div>
-            <img src="assets\Deserts.png" class="img-size">
-        </div>
-    </div>
-    
-    <div><mat-divider></mat-divider></div>
     <div><h1 class="font" style="color: Orange;">Good Food Guaranteed !</h1></div>
     <div class="gallery-container">
         <div class="gallery-div">
@@ -77,8 +48,11 @@
             <img src="assets\Fast-Food.jpg" class="gallery-image" height="300px">
         </div>
         <div class="gallery-div">
-            <img src="assets\anotherFood.jpg" class="gallery-image" height="300px">
-        </div>   
+            <img src="assets\food3.jpg" class="gallery-image" height="300px">
+        </div>
+        <div class="gallery-div">
+            <img src="assets\food4.jpg" class="gallery-image" height="300px" width="430px">
+        </div>
     </div>
 
     <div><mat-divider></mat-divider></div>
@@ -100,13 +74,43 @@
 
     <div><mat-divider></mat-divider></div>
     <div><h1 class="font" style="color: rgb(179, 64, 179);">And many more...</h1><h1 class="font" style="color: greenyellow;">Only on Foodie</h1></div>
-    <div style="text-align: center;"><img src="assets\background_2.jpg" style="border-radius: 50%;height: 400px;"></div>
-
+    <div style="text-align: center; background-color: aquamarine;"><img src="assets\background_2.jpg" style="border-radius: 50%;height: 400px;"></div>
+    <div>
+        <div class="home-gallery">
+            <img class="main-logo" src="assets\Main_Logo_2.png">
+        </div>
+    </div><br>
+    <div><h1 class="font" style="color: greenyellow;">Mouth Watering Cuisine !</h1></div>
+    <div class="cuisine-div">
+        <div>
+            <img src="assets\Indian_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Italian_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Healthy_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Chinese_logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Bakery_Logo.jpg" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Beverage_logo.png" class="img-size">
+        </div>
+        <div>
+            <img src="assets\Deserts.png" class="img-size">
+        </div>
+    </div>
+    
+    <div><mat-divider></mat-divider></div>
     <mat-sidenav #sidenav class="sidenav">
         <mat-nav-list>
             <a mat-list-item> Menu <button mat-button color="warm" (click)="sidenav.close()" style="margin-left: 65%;"><mat-icon>clear</mat-icon></button></a>
-            <a mat-list-item (click)="navToLogin()"><mat-icon class="icon-gap">person</mat-icon>User Login</a>
-            <a mat-list-item (click)="ownerRegister()"><mat-icon class="icon-gap">people</mat-icon>Restaurant Owners</a>
+            <a mat-list-item (click)="navToLogin()"><mat-icon class="icon-gap">person</mat-icon>Customer</a>
+            <a mat-list-item (click)="ownerRegister()"><mat-icon class="icon-gap">people</mat-icon>Owners</a>
             <a mat-list-item (click)="navAdminLog()"><mat-icon class="icon-gap">adb</mat-icon>Admin</a>
         </mat-nav-list>
     </mat-sidenav>

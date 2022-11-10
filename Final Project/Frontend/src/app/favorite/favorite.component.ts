@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpParams } from '@angular/common/http';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { Restaurant } from '../Model-Classes/Restaurant';
+import Swal from 'sweetalert2';
 import { OwnerProfileComponent } from '../owner-profile/owner-profile.component';
+import { Restaurant } from '../Model-Classes/Restaurant';
 import { DisplayRestaurantComponent } from '../Restaurants/display-restaurant/display-restaurant.component';
-import { RestaurantAddComponent } from '../Restaurants/restaurant-add/restaurant-add.component';
+import { RestaurantEditComponent } from '../Restaurants/restaurant-add/restaurant-edit.component';
 import { LinkService } from '../Services/link.service';
 
 @Component({
@@ -72,7 +74,7 @@ export class FavoriteComponent implements OnInit {
     }
   
     openRestaurantsDetails(){
-      const dialogRef = this.dialog.open(RestaurantAddComponent, {
+      const dialogRef = this.dialog.open(RestaurantEditComponent, {
         width : '55%',
         height : '650px'
       });
@@ -103,8 +105,10 @@ export class FavoriteComponent implements OnInit {
     //this.RestForm.setValue(pass);
     let imageData = 'data:image/jpeg;base64,' +pass.image;
     this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(imageData);
+    Swal.fire("Congrats...!!!","Restaurant Added to Favorite List...","success");
     
     this.link.addFav(this.RestForm.value).subscribe((x)=>{
+      
       console.log("List Added",x);
        this.getFav1();
     })

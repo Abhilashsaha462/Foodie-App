@@ -1,8 +1,10 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FileHandle } from 'src/app/Model-Classes/File-handle.model';
-import { LinkService } from 'src/app/Services/link.service';
+import { FileHandle } from '../../Model-Classes/File-handle.model';
+import { Restaurant } from '../../Model-Classes/Restaurant';
+import { LinkService } from '../../Services/link.service';
 
 @Component({
   selector: 'app-restaurant',
@@ -10,7 +12,6 @@ import { LinkService } from 'src/app/Services/link.service';
   styleUrls: ['./restaurant.component.css']
 })
 export class RestaurantComponent implements OnInit {
-
   RestForm:FormGroup;
   items!:FormArray;
   imageData:FileHandle[]=[];
@@ -53,5 +54,4 @@ export class RestaurantComponent implements OnInit {
       
     })
   }
-
 }

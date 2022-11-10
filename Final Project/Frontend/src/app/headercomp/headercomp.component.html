@@ -1,37 +1,36 @@
 <mat-toolbar color="primary" class="a">
-    <button mat-icon-button (click)="sidenav.toggle()"><mat-icon aria-label="sidenav.toggle();" matTooltip="Menu">menu</mat-icon></button>
-    <span matTooltip="Home" class="b"> Foodie App</span>
-    <form>
-      <mat-form-field appearance="fill">
-        <input matInput #message maxlength="256" placeholder="Ex. I wan't to Search..." name="searchquery" matTooltip="Search Here" class="example-full-width">
-      </mat-form-field>
-      <button mat-icon-button color="primary" selected class="c"><mat-icon color="accent" matTooltip="Search">search</mat-icon></button>
-    <button mat-icon-button color="primary" selected><mat-icon color="accent" matTooltip="Voice Search">mic</mat-icon></button>
-    <button mat-icon-button color="primary" selected class="d"><mat-icon  color="accent" matTooltip="Notifications">notifications</mat-icon></button>
-    <router-outlet></router-outlet>
-      <button mat-icon-button color="primary" selected class="d"><mat-icon color="accent" matTooltip="Applications">apps</mat-icon></button></form>
-      <button mat-icon-button [matMenuTriggerFor]="menu1" class="d" color="primary" selected><mat-icon color="accent" matTooltip="Manage Profile">person_outline</mat-icon></button>
-  <mat-menu #menu1="matMenu">
-  <button mat-menu-item><mat-icon>settings</mat-icon>Setting</button>
-  <button mat-menu-item><mat-icon>help</mat-icon>Help</button>
-  <button mat-menu-item><mat-icon>notifications_off</mat-icon>Disable alerts</button>
-  <button mat-menu-item><mat-icon>sms_failed</mat-icon>Send Feedback</button>
-  </mat-menu>
-  </mat-toolbar>
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav opened="false" [mode]="(isHandset$ | async)?'over':'side'">
-        <mat-nav-list>
-          <a mat-list-item><mat-icon>home</mat-icon>&nbsp; Home</a>
-          <a mat-list-item><mat-icon>explore</mat-icon>&nbsp; Explore</a>
-        <a mat-list-item><mat-icon color="accent">subscriptions</mat-icon>&nbsp; Subscriptions</a>
-        <a mat-list-item><mat-icon>history</mat-icon>&nbsp; History</a>
-          <br><hr>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <!-- Add Content Here -->
-      
-    </mat-sidenav-content>
+  <button mat-icon-button (click)="sidenav.toggle()"><mat-icon aria-label="sidenav.toggle();" matTooltip="Menu">menu</mat-icon></button>
+  <span matTooltip="Home" class="b"> Foodie App</span>
+  <form>
+    <mat-form-field appearance="fill">
+      <input matInput #message maxlength="256" placeholder="Ex. I wan't to Search..." name="searchquery" matTooltip="Search Here" class="example-full-width">
+    </mat-form-field>
+    <button mat-icon-button color="primary" selected class="c"><mat-icon color="accent" matTooltip="Search">search</mat-icon></button>
+  <button mat-icon-button color="primary" selected><mat-icon color="accent" matTooltip="Voice Search">mic</mat-icon></button>
+  <button mat-icon-button color="primary" selected class="d"><mat-icon  color="accent" matTooltip="Notifications">notifications</mat-icon></button>
+  <router-outlet></router-outlet>
+    <button mat-icon-button color="primary" selected class="d"><mat-icon color="accent" matTooltip="Applications">apps</mat-icon></button></form>
+    <button mat-icon-button [matMenuTriggerFor]="menu1" class="d" color="primary" selected><mat-icon color="accent" matTooltip="Manage Profile">person_outline</mat-icon></button>
+<mat-menu #menu1="matMenu">
+<button mat-menu-item><mat-icon>settings</mat-icon>Setting</button>
+<button mat-menu-item><mat-icon>help</mat-icon>Help</button>
+<button mat-menu-item><mat-icon>notifications_off</mat-icon>Disable alerts</button>
+<button mat-menu-item><mat-icon>sms_failed</mat-icon>Send Feedback</button>
+</mat-menu>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav opened="false" [mode]="(isHandset$ | async)?'over':'side'">
+      <mat-nav-list>
+        <a mat-list-item><mat-icon>home</mat-icon>&nbsp; Home</a>
+        <a mat-list-item><mat-icon>explore</mat-icon>&nbsp; Explore</a>
+      <a mat-list-item><mat-icon color="accent">subscriptions</mat-icon>&nbsp; Subscriptions</a>
+      <a mat-list-item><mat-icon>history</mat-icon>&nbsp; History</a>
+        <br><hr>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Add Content Here -->
+    
+  </mat-sidenav-content>
 </mat-sidenav-container>
-  
-  
+

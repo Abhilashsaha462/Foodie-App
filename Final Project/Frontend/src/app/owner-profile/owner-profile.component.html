@@ -11,7 +11,7 @@
 
         <mat-form-field class="email" appearance="fill">
             <mat-label>Email Id</mat-label>
-            <input type="text" matInput placeholder="Ex.  xyz00@abc.com" readonly class="inputs" formControlName="email">
+            <input type="text" matInput placeholder="Ex.  xyz00@abc.com" class="inputs" formControlName="email">
         </mat-form-field>
         
     </div>
@@ -21,8 +21,8 @@
             <mat-label>Contact No</mat-label>
             <input type="text" matInput placeholder="Ex. +91 7783672422" class="inputs" formControlName="phoneNo">
         </mat-form-field>
-        <!--<div class="ErrMsg" *ngIf="EditForm.controls['phoneNo'].hasError('required')">Password is Mandatory !</div>-->
-        <div class="ErrMsg" *ngIf="EditForm.controls['phoneNo'].hasError('pattern')">phone No format is incorrect! Please try again!</div> 
+        <!--<div class="ErrMsg" *ngIf="RegistryForm.controls['phoneNo'].hasError('required')">Password is Mandatory !</div>-->
+        <!-- <div class="ErrMsg" *ngIf="EditForm.controls['phoneNo'].hasError('pattern')">phone No format is incorrect! Please try again!</div> -->
 
         <mat-form-field class="password" appearance="fill">
             <mat-label>Set Password</mat-label>
@@ -46,7 +46,7 @@
                 <mat-label>road/Lane</mat-label>
                 <input type="text" matInput placeholder="Ex. baseRoad, Lane 23" class="inputs" formControlName="roadName">
             </mat-form-field>
-            <!-- <div class="ErrMsg" *ngIf="EditForm.controls['homeNo'].hasError('pattern')">Pincode should only consist of numbers</div> -->
+            <!--<div class="ErrMsg" *ngIf="RegistryForm.controls['homeNo'].hasError('required')">Detail is Mandatory !</div>-->
         </div>
         
         <div>
@@ -64,5 +64,5 @@
         </div>
     </div></div>
     <button mat-raised-button type="submit">Update</button>
-    <button mat-raised-button class="cancel-button" (click)="cancelation()">Cancel</button> 
+    <!-- <button mat-raised-button class="cancel-button" (click)="cancelation()">Cancel</button> -->
 </form>

@@ -1,3 +1,4 @@
+import { SelectorMatcher } from '@angular/compiler';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -5,15 +6,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { FavoriteComponent } from 'src/app/favorite/favorite.component';
-import { Restaurant } from 'src/app/Model-Classes/Restaurant';
-import { OwnerProfileComponent } from 'src/app/owner-profile/owner-profile.component';
-import { LinkService } from 'src/app/Services/link.service';
+import { OwnerProfileComponent } from '../../owner-profile/owner-profile.component';
+import { Restaurant } from '../../Model-Classes/Restaurant';
+import { LinkService } from '../../Services/link.service';
 import { DisplayRestaurantComponent } from '../display-restaurant/display-restaurant.component';
-import { RestaurantAddComponent } from '../restaurant-add/restaurant-add.component';
-
+import { RestaurantEditComponent } from '../restaurant-add/restaurant-edit.component';
 declare function search():void;
 declare var $: any;
 declare var jQuery: any;
+
 @Component({
   selector: 'app-restaurant-details',
   templateUrl: './restaurant-details.component.html',
@@ -22,7 +23,7 @@ declare var jQuery: any;
 export class RestaurantDetailsComponent implements OnInit {
   thumbnail: any;
 RestForm:FormGroup;
-  constructor(private router:Router, public dialog: MatDialog,private link:LinkService,private formbuilder:FormBuilder,private sanitizer:DomSanitizer) {
+  constructor(private router:Router, public dialog: MatDialog,private link:LinkService,private formbuilder:FormBuilder,private sanitizer:DomSanitizer) { 
     this.RestForm = this.formbuilder.group({
       restId: new FormControl('',[Validators.required]),
       restName: new FormControl('',[Validators.required]),
@@ -35,7 +36,9 @@ RestForm:FormGroup;
         })
       ])
     });
+    
   }
+
   ngOnInit(): void {
     this.getAll();
   }
@@ -44,29 +47,39 @@ RestForm:FormGroup;
     this.link.getAll().subscribe((x)=>{
       this.restaurant=x;
       console.log("All Data...!!!",this.restaurant);
+      
     })
   }
   logout(){
+
     // logout code
     this.link.toLoggedOut();
     this.router.navigateByUrl('');
   }
+
   //  only test
+
   openProfile() : void{
+    
     //  get profile code
+
     const dialogRef = this.dialog.open(OwnerProfileComponent, {
       width : '45%',
       height : '600px'
     });
+
     // dialogRef.afterClosed().subscribe(result => {
     //   console.log('The Dialog was closed!');
     // })
+    
   }
+
   openRestaurantsDetails(){
-    const dialogRef = this.dialog.open(RestaurantAddComponent, {
+    const dialogRef = this.dialog.open(RestaurantEditComponent, {
       width : '75%',
       height : '650px'
     });
+
     dialogRef.afterClosed().subscribe(result => {
       console.log('The Dialog was closed!');
     })
@@ -81,12 +94,15 @@ RestForm:FormGroup;
       console.log('The Dialog was closed!');
     })
   }
+
   selected: boolean | undefined;
   selectedChange = new EventEmitter<boolean>();
   // public toggleSelected(pass1:any) {
+    
   //   this.selected = !this.selected;
   //   this.selectedChange.emit(this.selected);
   //   console.log(pass1);
+    
   //   if(this.selected){
   //     console.log("True");
   //     this.addToFav(pass1);
@@ -95,6 +111,7 @@ RestForm:FormGroup;
   //     console.log("False");
   //     let k = localStorage.getItem('x');
   //     console.log("k",k);
+      
   //     this.deleteFav(k);
   //   }
   // }
@@ -107,6 +124,7 @@ addToFav(pass:any){
   //this.RestForm.setValue(pass);
   let imageData = 'data:image/jpeg;base64,' +pass.image;
   this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(imageData);
+  
   this.link.addFav(this.RestForm.value).subscribe((x)=>{
     console.log("List Added",x);
      this.getFav();
@@ -115,6 +133,7 @@ addToFav(pass:any){
 deleteFav(pass:any){
   //this.RestForm.get('restId')?.setValue(pass.restId);
   console.log("Delete",pass);
+  
 this.link.removeFav(pass).subscribe((x)=>{
 console.log("List Removed from Fav...");
 this.getFav();
@@ -123,6 +142,7 @@ this.getFav();
 getFav(){
   this.link.getFav().subscribe((x)=>{
     console.log("Fav list is ",x);
+    
   })
 }
 toFavList(){
@@ -131,6 +151,7 @@ toFavList(){
     width : '100%',
     height : '650px'
   });
+  
   dialogRef.afterClosed().subscribe(result => {
     console.log('The Dialog was closed!');
   })
@@ -154,6 +175,7 @@ data1:any;
 //   this.link.getSearch(k).subscribe((x)=>{
 //     console.log("Search Data...",x);
 //     this.data0=x;
+    
 //   });
 //   }
 //   console.log("Search Data0...",this.data0);
@@ -161,4 +183,5 @@ data1:any;
 f(){
   new search();
 }
+
 }

@@ -26,7 +26,7 @@
               "src/custom-theme.scss",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["src/app/Restaurants/restaurant-details/restaurant-details.js"]
           },
           "configurations": {
             "production": {

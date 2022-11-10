@@ -16,4 +16,7 @@ public interface UserService {
     User updateUserDetails(User user) throws UserNotFoundException;
     User getUser(String email) throws UserNotFoundException;
     List<Restaurant> getFavorite(String email) throws UserNotFoundException;
+    public User addMyList(List<Restaurant> list,String email)throws UserNotFoundException;
+    List<User> getAllUsers();
+    public boolean deleteUser(String email)throws UserNotFoundException;
 }

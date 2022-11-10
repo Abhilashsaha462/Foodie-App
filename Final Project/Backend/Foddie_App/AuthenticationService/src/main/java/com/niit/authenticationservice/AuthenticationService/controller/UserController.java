@@ -1,5 +1,7 @@
 package com.niit.authenticationservice.AuthenticationService.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.niit.authenticationservice.AuthenticationService.domain.EmailDetails;
 import com.niit.authenticationservice.AuthenticationService.domain.User;
 import com.niit.authenticationservice.AuthenticationService.exception.UserNotFoundException;
 import com.niit.authenticationservice.AuthenticationService.service.EmailService;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.DataInput;
 import java.io.IOException;
 import java.util.Map;
 @RequestMapping("/api/v3")
@@ -19,13 +22,13 @@ public class UserController {
     private ResponseEntity responseEntity;
     private UserService userService;
     private SecurityTokenGenerator securityTokenGenerator;
+    @Autowired
     private EmailService emailService;
 
     @Autowired
-    public UserController(UserService userService, SecurityTokenGenerator securityTokenGenerator, EmailService emailService) {
+    public UserController(UserService userService, SecurityTokenGenerator securityTokenGenerator) {
         this.userService = userService;
         this.securityTokenGenerator = securityTokenGenerator;
-        this.emailService = emailService;
     }
 
     @PostMapping("/register")
@@ -37,7 +40,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody User user) throws UserNotFoundException {
-        System.out.println("");
+        System.out.println(user);
         Map<String, String> map = null;
         try {
             User userObj = userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
@@ -52,16 +55,26 @@ public class UserController {
         }
         return responseEntity;
     }
-
     @PutMapping("/update")
     public ResponseEntity updateUserDetailsFunction(@RequestBody User user)throws UserNotFoundException {
-        if (user.getPassword() == null) {
-            return responseEntity = new ResponseEntity<>("Nothing to Save", HttpStatus.OK);
-        } else {
-            userService.updateUser(user);
-            System.out.println("reached");
-            return responseEntity = new ResponseEntity("User Updated", HttpStatus.CREATED);
+       try {
+           System.out.println("reached");
+           userService.updateUser(user);
+           responseEntity = new ResponseEntity("User Updated", HttpStatus.CREATED);
+       }catch (UserNotFoundException e){
+           throw new UserNotFoundException();
+       }
+       return responseEntity;
+
+    }
+    @PutMapping("/forgot")
+    public ResponseEntity forgotPassword(@RequestBody User user)throws UserNotFoundException{
+        try {
+            responseEntity = new ResponseEntity(userService.forgotPassword(user),HttpStatus.OK);
+        }catch (UserNotFoundException e){
+            throw new UserNotFoundException();
         }
+        return responseEntity;
     }
 
 }

@@ -19,7 +19,5 @@ public class User {
     private String password;
     private String userName;
     private String phoneNo;
-    private List<Address> address;
-    private List<Restaurant> favorites;
-
+    private List<Address> addresses;
 }

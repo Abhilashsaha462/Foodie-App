@@ -6,11 +6,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ConsumerConfig {
-
     @Bean
     public Jackson2JsonMessageConverter producerConverter(){
         return new Jackson2JsonMessageConverter();
     }
-
 }
 

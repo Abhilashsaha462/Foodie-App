@@ -1,7 +1,13 @@
 .sidenav-container{
     height: 100%;
+    background-color: rgb(64, 62, 67);
 }
-
+.toolbar{
+  background-color: #868a8f;
+}
+.form-control{
+  color: black;
+}
 .menu-button{
     margin-right: 20px;
 }
@@ -18,61 +24,53 @@
 .icon-gap{
     margin-right: 10px;
 }
-
 .grid-container {
-    margin: 20px;
-}
-
-.dashboard-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-}
-
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-
-.dashboard-card-content {
-  text-align: center;
-}
-
-.k{
-  font-style: Georgia (serif);
-  font-size: larger;font-weight: bold;
-}
-
-.example-button-container {
-  display: flex;
-  /* justify-content: center; */
-  /* width: 120px; */
-  position:relative;margin-top: -190px;float: left;margin-left: -20px;
-}
-
-.fav{
-  text-decoration-color: red;
-}
-
-.notfav{
-  color: red;
-}
-
-.search-comp{
+    margin-left: 20px;margin-right: 20px;margin-bottom: 20px;
+  }
   
-  width: 400px;
-  margin-left: 5%;
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .dashboard-card-content {
+    text-align: center;
+  }
+  .k{
+    font-style: Georgia (serif);
+    font-size: larger;font-weight: bold;
+  }
+  .example-button-container {
+    display: flex;
+    /* justify-content: center; */
+    /* width: 120px; */
+    position:relative;margin-top: -190px;float: left;margin-left: -20px;
+  }
+  .fav{
+    text-decoration-color: red;
+  }
+  notfav{
+    color: red;
+  }
+  .search-comp{
+    
+    width: 400px;
+    margin-left: 5%;
 }
-
 .search-comps{
   position: static;
   width: 400px;
   margin-left: 30%;
 }
-
 .search-result{
   position:absolute;
   /* border: 1px solid gray; */
@@ -83,17 +81,17 @@
   background-color: white;
   font-size: medium;padding-left: 10px;color: whitesmoke;text-decoration: none;
 }
-
 .search-container{
   position: relative;
   width: 30%;
-  margin-left: 28%; 
+  margin-left: 28%;
+  
 }
-
 .last-container{
   height: 300px;
   width: 100%;
   margin-top: 10px;
+  background-color: silver;
 }
 
 .main-logo{
@@ -104,6 +102,106 @@
   height: 50px;
   margin-right: 20px;
   display: inline;
+}
+@import url('https://fonts.googleapis.com/css?family=Montserrat:600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(45deg,#d8f2f3 0%,#ebf9f9 100%);
+}
+.center,.front-face,
+.contents,.back-face{
+  position: absolute;
+}
+.center{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 290px;
+  transform-style: preserve-3d;
+ perspective: 1000px;
+}
+.front-face, .back-face{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,.2),
+              rgba(0,0,0,.2)),url('/Foodie_App/src/app/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  transform: translateY(0deg);
+  border-radius: 10px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.4,.2,.2,1);
+}
+.contents{
+  left: 0%;
+  top: 50%;
+  width: 100%;
+  perspective: 1000px;
+  transform: translateY(-50%) translateZ(60px) scale(0.94);
+}
+.front p{
+  font-size: 35px;
+  margin-bottom: 15px;
+  color: white;
+}
+.front span{
+  font-size: 23px;
+  color: white;
+}
+.front p:after{
+  content: '';
+  display: block;
+  left: 0;
+  right: 0;
+  width: 100px;
+  height: 2px;
+  background: white;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.back-face{
+  transform: rotateY(180deg);
+  background: linear-gradient(45deg,#043348 0%,#032535 100%);
+}
+.back {
+  color: white;
+}
+.back h2{
+  font-size: 33px;
+  padding-bottom: 5px;
+}
+.back span{
+  font-size: 25px;
+}
+.icons{
+  margin: 10px 0;
+  display: block;
+}
+i.fab{
+  color:  #042f4b;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+  background: white;
+  border-radius: 50%;
+  margin: 0 5px;
+  line-height: 40px;
+  cursor: pointer;
+}
+.center:hover > .back-face{
+  transform: rotateY(0deg);
+}
+.center:hover > .front-face{
+  transform: rotateY(-180deg);
 }
 
 .desclaimer{
@@ -121,7 +219,6 @@
 
   font-family: 'Roboto Condensed', sans-serif;
 }
-
-.search{
-  margin-left: 0px;
+.form-control{
+  color: white;
 }

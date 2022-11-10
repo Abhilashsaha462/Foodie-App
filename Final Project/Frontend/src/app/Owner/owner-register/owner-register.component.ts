@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Address } from 'src/app/Model-Classes/Address';
+import { Address } from 'src/app/address';
 import { Restaurant } from 'src/app/Model-Classes/Restaurant';
 import { LinkService } from 'src/app/Services/link.service';
 
@@ -11,7 +11,6 @@ import { LinkService } from 'src/app/Services/link.service';
   styleUrls: ['./owner-register.component.css']
 })
 export class OwnerRegisterComponent implements OnInit {
-
   RegistryForm:FormGroup;
   tempArray1:Address | undefined;
   tempArray2:Restaurant|undefined;
@@ -45,7 +44,7 @@ export class OwnerRegisterComponent implements OnInit {
     this.register.ownerRegister(regData).subscribe(() => {
       alert("Register Successful");
       // location.reload();
-      window.location.href="/owner-container/owner-login";
+      window.location.href="/ownerlogin";
     });
     }
   }
@@ -81,7 +80,8 @@ export class OwnerRegisterComponent implements OnInit {
     this.router.navigateByUrl('');
   }
   ownerLogin(){
-    this.router.navigateByUrl('/owner-container/owner-login')
+    this.router.navigateByUrl('ownerlogin')
   }
+
 
 }

@@ -1,4 +1,4 @@
-package com.niit.UserService.controller;
+package com.niit.UserService.Controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -69,8 +69,8 @@ public class UserControllerTest {
         menu1 = new Menu("Chicken Biriyani",90.0);
         menu2 = new Menu("Butter Nan",70.0);
 //        menuList = Arrays.asList(menu1,menu2);
-        restaurant1 = new Restaurant(1001,"Ranjit Hotel","Siliguri",null);
-        restaurant2 = new Restaurant(1002,"Zaika Biriyani","Kolkata",null);
+        restaurant1 = new Restaurant(1001,"Ranjit Hotel","Siliguri");
+        restaurant2 = new Restaurant(1002,"Zaika Biriyani","Kolkata");
         favorites = Arrays.asList(restaurant1,restaurant2);
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
     }
@@ -103,3 +103,4 @@ public class UserControllerTest {
     }
 
 }
+
