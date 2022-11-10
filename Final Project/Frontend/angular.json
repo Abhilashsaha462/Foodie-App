@@ -24,9 +24,11 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss"
             ],
-            "scripts": ["src/app/Restaurants/restaurant-details/restaurant-details.js"]
+            "scripts": ["src/app/Restaurants/restaurant-details/restaurant-details.js",
+          "node_modules/jquery/dist/jquery.js"]
           },
           "configurations": {
             "production": {
