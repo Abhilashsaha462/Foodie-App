@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { Address } from '../address';
+import { Address } from '../Model-Classes/address';
 import { Restaurant } from '../Model-Classes/Restaurant';
 import { LinkService } from '../Services/link.service';
 

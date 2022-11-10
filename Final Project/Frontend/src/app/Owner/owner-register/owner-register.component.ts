@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Address } from 'src/app/address';
+import { Address } from 'src/app/Model-Classes/address';
 import { Restaurant } from 'src/app/Model-Classes/Restaurant';
 import { LinkService } from 'src/app/Services/link.service';
 
