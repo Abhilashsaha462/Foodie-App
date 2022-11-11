@@ -1,9 +1,12 @@
-package com.niit.AdminService.Service;
+package com.niit.AdminService.service;
 
-import com.niit.AdminService.domain.*;
+import com.niit.AdminService.domain.Admin;
+import com.niit.AdminService.domain.Menu;
+import com.niit.AdminService.domain.Restaurant;
+import com.niit.AdminService.domain.User;
 import com.niit.AdminService.exception.AdminAlreadyExistsException;
+import com.niit.AdminService.exception.AdminNotFoundException;
 import com.niit.AdminService.repository.AdminRepository;
-import com.niit.AdminService.service.AdminServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,15 +14,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import static org.mockito.Mockito.*;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class AdminServiceTest {
+
     @Mock
     private AdminRepository adminRepository;
 
@@ -28,7 +33,6 @@ public class AdminServiceTest {
 
     private Admin admin1, admin2;
     private User user1, user2;
-    List<Address> addresses;
 
     private Restaurant restaurant1, restaurant2;
 
@@ -40,13 +44,13 @@ public class AdminServiceTest {
 
     @BeforeEach
     public void setup() {
-        user1 = new User("abhi@gmail.com", "abhil123", "AbhiLash", "7318656296",addresses);
-        user2 = new User("swapnil2022@gmail.com", "swapnil1", "Swapnil", "8373861031",addresses);
+        user1 = new User("abhi@gmail.com", "abhil123", "AbhiLash", "7318656296",null);
+        user2 = new User("swapnil2022@gmail.com", "swapnil1", "Swapnil", "8373861031",null);
         menu1 = new Menu("Chicken Biriyani", 90.0);
         menu2 = new Menu("Butter Nan", 70.0);
         menuList = Arrays.asList(menu1, menu2);
-        restaurant1 = new Restaurant(1001,"abhi@gmail.com","Ranjit Hotel", "Siliguri",new byte[]{ (byte) 204, 29, (byte) 207, (byte) 217 }, menuList);
-        restaurant2 = new Restaurant(1002,"abhi@gmail.com","Zaika Biriyani", "Kolkata",new byte[]{ (byte) 204, 29, (byte) 207, (byte) 217 }, menuList);
+        restaurant1 = new Restaurant(1001,"abhi@gmail.com","Ranjit Hotel", "Siliguri",null, menuList);
+        restaurant2 = new Restaurant(1002,"swapnil2022@gmail.com","Zaika Biriyani", "Kolkata",null,menuList);
         favorites = Arrays.asList(restaurant1, restaurant2);
         admin1 = new Admin("abhi@gmail.com", "abhil123", "AbhiLash", "7318656296", null);
         admin2 = new Admin("swapnil2022@gmail.com", "swapnil1", "Swapnil", "8373861031", null);
@@ -68,4 +72,11 @@ public class AdminServiceTest {
         verify(adminRepository, times(1)).findById(any());
     }
 
+//    @Test
+//    public void givenAdminToDelete() throws AdminNotFoundException {
+//        when(adminRepository.findById(admin2.getEmail())).thenReturn(Optional.of(admin2));
+//
+//    }
+
 }
+

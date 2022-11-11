@@ -33,7 +33,7 @@ public class AdminController {
 
     @PostMapping("/register")
     public  ResponseEntity<?> registerUser(@RequestBody Admin admin) throws AdminAlreadyExistsException {
-        return new ResponseEntity<>(adminService.registerUser(admin), HttpStatus.OK);
+        return new ResponseEntity<>(adminService.registerUser(admin), HttpStatus.CREATED);
     }
 
     @PostMapping("/admin/restaurantName")

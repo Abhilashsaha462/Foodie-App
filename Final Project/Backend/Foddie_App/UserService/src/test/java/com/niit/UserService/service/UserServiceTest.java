@@ -1,4 +1,5 @@
-package com.niit.UserService.Service;
+package com.niit.UserService.service;
+
 import UserDefinedException.UserAlreadyExistsException;
 import com.niit.UserService.Model.Address;
 import com.niit.UserService.Model.Menu;
@@ -75,5 +76,10 @@ public class UserServiceTest {
         verify(userRepository,times(1)).save(any());
         verify(userRepository,times(1)).findById(any());
     }
+
+//    @Test
+//    public void givenUserToDelete() {
+//        when(userRepository.findById(user2.getEmail())).thenReturn(Optional.of(user2));
+//    }
 
 }

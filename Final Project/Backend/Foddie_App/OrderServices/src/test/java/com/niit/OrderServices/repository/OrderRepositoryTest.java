@@ -1,4 +1,5 @@
-package com.niit.OrderServices.Repository;
+package com.niit.OrderServices.repository;
+
 import com.niit.OrderServices.Controller.OrderController;
 import com.niit.OrderServices.Model.*;
 import com.niit.OrderServices.Repository.OrderRepository;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ExtendWith(SpringExtension.class)
 @DataMongoTest
 public class OrderRepositoryTest {
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -58,7 +60,7 @@ public class OrderRepositoryTest {
         address1 = new Address(1030,"Highway Road","Hyderabad",734014L);
         address2 = new Address(1031,"MG Road","Chennai",734006L);
         addressList = Arrays.asList(address1,address2);
-        order1 = new Order(1052,new User("jitesh@gmail.com","Jitesh","7318562867", addressList),new Bill(1000,menuList,150.0));
+        order1 = new Order(1052,new User("swapnil@gmail.com","Swapnil","7318562867", addressList),new Bill(1000,menuList,150.0));
         order2 = new Order(1051,new User("rushi@gmail.com","Rushikesh","7318656296", addressList),new Bill(1001,menuList1,200.0));
     }
 

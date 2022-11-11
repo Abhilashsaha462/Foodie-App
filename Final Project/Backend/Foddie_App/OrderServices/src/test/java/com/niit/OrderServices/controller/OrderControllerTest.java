@@ -1,7 +1,8 @@
-package com.niit.OrderServices.Controller;
+package com.niit.OrderServices.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.niit.OrderServices.Controller.OrderController;
 import com.niit.OrderServices.Model.*;
 import com.niit.OrderServices.Services.OrderService;
 import org.junit.jupiter.api.AfterEach;
@@ -29,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class OrderServiceControllerTest {
+public class OrderControllerTest {
     @Autowired
     private MockMvc mockMvc;
 

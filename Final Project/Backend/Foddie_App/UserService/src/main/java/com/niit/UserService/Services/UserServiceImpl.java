@@ -18,14 +18,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private UserProxy userProxy;
     private AdminProxy adminProxy;
     private RestaurantRepository restaurantRepository;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RestaurantRepository restaurantRepository,UserProxy userProxy){
+    public UserServiceImpl(UserRepository userRepository, RestaurantRepository restaurantRepository, UserProxy userProxy) {
         this.userRepository = userRepository;
         this.restaurantRepository = restaurantRepository;
         this.userProxy = userProxy;
@@ -38,16 +39,13 @@ public class UserServiceImpl implements UserService{
             throw new UserAlreadyExistsException();
         }
         ResponseEntity<?> response = userProxy.saveUser(user);
-//        if (response.getStatusCodeValue()==201){
-//            return userRepository.save(user);
-//        }
-//        ResponseEntity<?> responseEntity = userProxy.saveUser(user);
-//        if (responseEntity.getStatusCodeValue()==201){
+        if (response.getStatusCodeValue()==201)
+        {
             return userRepository.save(user);
-//        }
-//        else {
-//            return null;
-//        }
+        }
+        else {
+            return null;
+        }
     }
 
     @Override
@@ -63,14 +61,12 @@ public class UserServiceImpl implements UserService{
                 if (tempList.contains(restaurant.getRestName())) {
                     System.out.println("Duplicate Entry...");
                 } else if (restaurant.getRestName().isEmpty()) {
-                    System.out.println("Nothig to Save...");
+                    System.out.println("Nothing to Save...");
                 } else {
                     tempList.add(restaurant);
                     user.setFavorites(tempList);
                 }
             }
-
-
             return userRepository.save(user);
         }
     }

@@ -1,4 +1,5 @@
-package com.niit.UserService.Repository;
+package com.niit.UserService.repository;
+
 
 import com.niit.UserService.Model.Address;
 import com.niit.UserService.Model.Menu;
@@ -43,7 +44,7 @@ public class UserRepositoryTest {
 
     @BeforeEach
     public void setup(){
-        user = new User("abhi@gmail.com","abhil123","AbhiLash","7318656296",address,favorites);
+        user = new User("abhilashsaha1@gmail.com","abhil123","AbhiLash","7318656296",address,favorites);
         user2 = new User("swapnil2022@gmail.com","swapnil1","Swapnil","8373861031",address,favorites);
         address1 = new Address(1017,"MG Road","Siliguri",734006L);
         address2 = new Address(1020,"College Street Road","Kolkata",734014L);

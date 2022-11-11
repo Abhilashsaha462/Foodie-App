@@ -106,7 +106,7 @@ public class OrderController {
         System.out.println(data);
         //int amt = Integer.parseInt(data.get("amount").toString());
         double amt = Double.parseDouble(data.get("amount").toString());
-        var client = new RazorpayClient("rzp_test_57YwJ8uRgM4FPo","PZHKcLLBzYzT02eAvmiLANWq");
+        var client = new RazorpayClient("rzp_test_oocfUH7uXcDpYC","b0CTrn1JBjIIMMEbyCrQYh3b");
         JSONObject ob = new JSONObject();
         ob.put("amount",amt*100);
         ob.put("currency","INR");
