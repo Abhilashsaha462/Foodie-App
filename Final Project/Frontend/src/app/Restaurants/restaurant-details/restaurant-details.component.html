@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <mat-sidenav-container class="sidenav-container">
     <mat-toolbar color="black" class="toolbar">
         <button mat-icon-button class="menu-button" (click)="sidenav.open()"><mat-icon>menu</mat-icon></button>
@@ -17,18 +17,31 @@
       
         
       
-        <div class="search-container my-6">
-          <mat-form-field appearance="fill" style="width: 100%;">
-          <input onkeyup="search()" id="search-input" type="search" class="form-control" matInput placeholder="Search">
+        <div class="search-container my-6" style="margin-right: -25px;">
+          <mat-form-field appearance="fill" style="width: 100%; margin-right: -100px;">
+          <button type="submit"><i class="fa fa-search"></i></button>   
+          <input onkeyup="search()" id="search-input" type="search" class="form-control" matInput placeholder="Search" style="margin-left: 10px;">
         </mat-form-field>
           <div class="search-result">
           </div>
+          <button mat-icon-button matTooltip="Audio Search">
+            <mat-icon>mic</mat-icon>
+          </button>
+          <!-- <button mat-icon-button style="margin-right: 5px;">
+            <mat-icon matTooltip="Notifications">notifications</mat-icon>
+           </button>
+          <button mat-icon-button >
+            <mat-icon matTooltip="My App">apps</mat-icon>
+           </button> -->
+           <button mat-icon-button matToolTip="Google Lens">
+            <mat-icon>photo_camera</mat-icon>
+           </button>
         </div>
       
 
 
 
-        <button mat-stroked-button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
+        <button class="logout-button" (click)="logout()"><mat-icon class="icon-gap">logout</mat-icon>Logout</button>
     </mat-toolbar>
     <marquee behavior="alternate" direction="" bgcolor="silver" scrollamount="7">ENJOY DELICIOUS FOOD ONLY ON FOODIE...!!! 
       <mat-icon class="icon-gap">local_dining</mat-icon></marquee>
